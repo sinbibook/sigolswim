@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <title>포항 시골쉼 독채 애견동반 펜션</title>
+
+    <link rel="stylesheet" href="styles/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" type="text/css" href="styles/common.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script type="text/javascript">
+        function setCookie(name, value, expirehours) {
+            var todayDate = new Date();
+            todayDate.setHours(todayDate.getHours() + expirehours);
+            document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";";
+        }
+
+        function closeWin(id, checkbox) {
+            if (checkbox.checked) {
+                setCookie(id, "done", 1);
+            }
+            document.getElementById(id).style.display = "none";
+        }
+    </script>
+  <!-- Open Graph Meta Tags for Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="포항 시골쉼 독채 애견동반 펜션" />
+  <meta property="og:description" content="포항의 약 250평 애견 운동장과 노래방, 공용 바비큐장을 갖춘 독채 펜션입니다." />
+  
+  <meta property="og:url" content="https://sigolswim.kr" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="포항 시골쉼 독채 애견동반 펜션" />
+  <meta name="twitter:description" content="포항의 약 250평 애견 운동장과 노래방, 공용 바비큐장을 갖춘 독채 펜션입니다." />
+  
+</head>
+<body>
+    <script src="js/header-footer-loader.js"></script>
+    <div id="sh_wrapper">
+    <main id="sh_container">
+
+            <!-- main_banner [s] -->
+            <article>
+                <div id="main_banner">
+                    <div class="swiper-container main_slide">
+                        <!-- MAPPER: layoutMap.sections[0].hero.images[isSelected] (sortOrder순) → 슬라이드 동적 생성 -->
+                        <div class="swiper-wrapper"></div>
+                    </div>
+                </div>
+            </article>
+            <!-- main_banner [e] -->
+
+            <!-- s: snb_wrap -->
+            <!-- MAPPER: layoutMap.enabled면 "미리보기"(on) + rooms[status=active].name → 객실 네비 동적 생성 -->
+            <div id="snb_wrap">
+                <ul data-room-nav-list>
+                </ul>
+            </div>
+            <!-- e: snb_wrap -->
+
+            <!-- roomList [s] -->
+            <article>
+                <div id="roomList">
+                    <div class="all_wrap">
+                        <div class="tit_area room_tit" data-aos="fade-up">
+                            <!-- MAPPER: layoutMap.sections[0].hero.title (폴백 "stay with comfort") / property.nameEn / layoutMap.sections[0].hero.description -->
+                            <div data-aos="fade-right">
+                                <b data-gallery-title-comfort></b>
+                                <p><span data-property-english-name></span><span>rooms</span></p>
+                            </div>
+                            <b data-aos="fade-left" data-gallery-description></b>
+                        </div>
+                        <div class="wrap" data-aos="fade-up">
+                            <div class="controls">
+                                <span class="arr prev">
+                                    <img src="images/left.png" alt="img01">
+                                </span>
+                                <span class="arr next">
+                                    <img src="images/right.png" alt="img01">
+                                </span>
+                            </div>
+                            <!-- MAPPER: property.rooms[].images[0].url + name + description -->
+                            <div class="room_slider swiper-container">
+                                <div class="swiper-wrapper room_slide" data-index-room-slides>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- roomList [e] -->
+
+            <!-- layout preview [s] -->
+            <div class="pre-wrap" id="direction">
+                <div class="tit">
+                    <div class="deco"></div>
+                    <!-- MAPPER: layoutMap.sections[0].about.title (폴백 "ROOM LAYOUT") -->
+                    <p data-layout-about-title></p>
+                </div>
+                <!-- MAPPER: layoutMap.sections[0].about.images[isSelected] (sortOrder순) → .img 동적 생성 -->
+                <div class="vimg" data-layout-about-images></div>
+            </div>
+            <!-- layout preview [e] -->
+    </main>
+    </div>
+
+    <script src="js/preview-handler.js"></script>
+    <script src="js/image-helpers.js"></script>
+    <script src="js/data-mapper/core/base-mapper.js"></script>
+    <script src="js/data-mapper/pages/layout-map-mapper.js"></script>
+    <script src="js/data-mapper/pages/header-footer-mapper.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/pages/layout-map.js"></script>
+</body>
+</html>

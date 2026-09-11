@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:,">
+    <title>포항 시골쉼 독채 애견동반 펜션</title>
+    <link rel="stylesheet" href="styles/theme.css" />
+    <link rel="stylesheet" href="styles/common.css" />
+    <style>
+      html, body { height: 100%; }
+      body {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-primary);
+      }
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .errorContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 300px 20px 100px;
+        text-align: center;
+      }
+      .errorCode {
+        font-size: 120px;
+        font-weight: 900;
+        color: var(--color-secondary);
+        line-height: 1;
+        margin-bottom: 20px;
+        letter-spacing: -4px;
+      }
+      .errorTitle {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--color-secondary);
+        margin-bottom: 15px;
+      }
+      .errorMessage {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 50px;
+        line-height: 1.8;
+        max-width: 480px;
+      }
+      /* 404 페이지 버튼 스타일 오버라이드 */
+      .errorContainer .btnBooking_2 {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        width: 250px;
+        height: 55px;
+        border: 1px solid var(--color-secondary);
+        font-size: 15px;
+        font-weight: 600;
+        font-style: italic;
+        color: var(--color-secondary);
+        background: linear-gradient(to right, rgba(96, 70, 58, 0) 25%, var(--color-secondary));
+        background-position: 1% 50%;
+        background-size: 400% 300%;
+        transition: 3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        text-decoration: none;
+      }
+      .errorContainer .btnBooking_2:after {
+        content: "";
+        width: 6px;
+        height: 12px;
+        background-image: url(./images/icon_bullet_1.png);
+        background-repeat: no-repeat;
+        background-position: 0 0;
+      }
+      .errorContainer .btnBooking_2:hover {
+        transition: 2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        color: #fff;
+        background-position: 99% 50%;
+      }
+      .errorContainer .btnBooking_2:hover:after {
+        background-image: url(./images/icon_bullet_1_2.png);
+      }
+      @media (max-width: 1180px) {
+        .errorCode { font-size: 80px; }
+        .errorTitle { font-size: 22px; }
+        .errorMessage { font-size: 14px; }
+        .errorContainer { padding: 300px 20px 80px; }
+        .errorContainer .btnBooking_2 {
+          width: 140px;
+          height: 40px;
+          font-size: 14px;
+        }
+      }
+    </style>
+    <!-- Open Graph Meta Tags for Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="포항 시골쉼 독채 애견동반 펜션" />
+  <meta property="og:description" content="포항의 약 250평 애견 운동장과 노래방, 공용 바비큐장을 갖춘 독채 펜션입니다." />
+  
+  <meta property="og:url" content="https://sigolswim.kr" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="포항 시골쉼 독채 애견동반 펜션" />
+  <meta name="twitter:description" content="포항의 약 250평 애견 운동장과 노래방, 공용 바비큐장을 갖춘 독채 펜션입니다." />
+  
+</head>
+  <body>
+    <main>
+      <div class="errorContainer">
+        <div class="errorCode">404</div>
+        <h1 class="errorTitle">페이지를 찾을 수 없습니다.</h1>
+        <p class="errorMessage">
+          요청하신 페이지가 존재하지 않거나 비활성화되었습니다.<br />
+          홈으로 돌아가기 버튼을 클릭해주세요.
+        </p>
+        <a href="index.html" class="btnBooking_2">홈으로 돌아가기</a>
+      </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/preview-handler.js"></script>
+    <script src="js/image-helpers.js"></script>
+    <script src="js/data-mapper/core/base-mapper.js"></script>
+    <script src="js/data-mapper/pages/header-footer-mapper.js"></script>
+    <script src="js/header-footer-loader.js"></script>
+    <script src="js/common.js"></script>
+  </body>
+</html>

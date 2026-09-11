@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <title>포항 시골쉼 독채 애견동반 펜션 - 예약안내</title>
+
+    <link rel="stylesheet" href="styles/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" type="text/css" href="styles/common.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/popup_black.css">
+
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script type="text/javascript">
+        function setCookie(name, value, expirehours) {
+            var todayDate = new Date();
+            todayDate.setHours(todayDate.getHours() + expirehours);
+            document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";";
+        }
+
+        function closeWin(id, checkbox) {
+            if (checkbox.checked) {
+                setCookie(id, "done", 1);
+            }
+            document.getElementById(id).style.display = "none";
+        }
+    </script>
+  <!-- Open Graph Meta Tags for Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="포항 시골쉼 독채 애견동반 펜션 - 예약안내" />
+  <meta property="og:description" content="포항의 약 250평 애견 운동장과 노래방, 공용 바비큐장을 갖춘 독채 펜션입니다." />
+  
+  <meta property="og:url" content="https://sigolswim.kr" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="포항 시골쉼 독채 애견동반 펜션 - 예약안내" />
+  <meta name="twitter:description" content="포항의 약 250평 애견 운동장과 노래방, 공용 바비큐장을 갖춘 독채 펜션입니다." />
+  
+</head>
+<body>
+    <script src="js/header-footer-loader.js"></script>
+    <div id="sh_wrapper">
+    <main id="sh_container">
+    
+            <!-- main_banner [s] -->
+            <article>
+                <div id="main_banner">
+                    <div class="swiper-container main_slide">
+                        <!-- MAPPER: customFields.pages.reservation.sections[0].hero.images[isSelected] → 슬라이드 동적 생성 -->
+                        <div class="swiper-wrapper"></div>
+                    </div>
+                </div>
+            </article>
+            <!-- main_banner [e] -->
+
+            <!-- reservation content [s] -->
+            <div id="room_cont">
+                <div id="reserve">
+                    <div class="tit">
+                        <span class="deco"></span>
+                        <!-- MAPPER: reservation.hero.title (1순위) / 값 없으면 아래 기본값 유지 -->
+                        <h1 data-reservation-title><span>RESERVATION</span> INFORMATION</h1>
+                    </div>
+                    <!-- MAPPER: property.realtimeBookingId → 예약 링크 (제목 아래 중앙 버튼) -->
+                    <div class="golink">
+                        <a href="#!">예약하기</a>
+                    </div>
+                    <div class="cont">
+                        <div class="room_if inner" data-aos="fade-up" style="padding-top:0;">
+                            <div class="info">
+                                <div class="r_cont reserve">
+                                    <div class="check">
+                                        <div>
+                                            <h3>예약안내</h3>
+                                            <!-- MAPPER: property.reservationGuide (\n→<br>) -->
+                                            <ul class="dot">
+                                                <li data-reservation-guide></li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3>환불안내</h3>
+                                            <!-- MAPPER: property.refundPolicies[] → 동적 생성 -->
+                                            <ul class="dot">
+                                                <li data-reservation-refund></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- reservation content [e] -->
+
+    </main>
+    </div>
+
+    <script src="js/preview-handler.js"></script>
+    <script src="js/image-helpers.js"></script>
+    <script src="js/data-mapper/core/base-mapper.js"></script>
+    <script src="js/data-mapper/pages/reservation-mapper.js"></script>
+    <script src="js/data-mapper/pages/header-footer-mapper.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/pages/reservation.js"></script>
+</body>
+</html>
