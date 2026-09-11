@@ -195,11 +195,11 @@
     var roomtypes = this.getRoomtypes();
     var self = this;
     var activeRoomtypes = roomtypes.filter(function (rt) {
-      if (!(rt && rt.name && rt.name.trim())) return false;
+      if (!self.getRoomtypeName(rt)) return false;
       var matched = self.getMatchedRoom(rt);
       return !(matched && matched.status === 'inactive');
     });
-    var roomItems = this.getRoomMenuItems(activeRoomtypes, function (rt) { return (rt && rt.name) || ''; });
+    var roomItems = this.getRoomMenuItems(activeRoomtypes);
 
     // Gallery title 매핑 (fallback: "stay with comfort")
     var titleComfortEl = document.querySelector('[data-gallery-title-comfort]');

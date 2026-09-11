@@ -95,7 +95,7 @@
     var room = this.getMatchedRoom(rt);
     if (!rt) return;
 
-    var name = (rt && rt.name) || '';
+    var name = this.getRoomtypeName(rt);
 
     // 객실명 매핑 (h1)
     var titleEl = document.querySelector('#room_cont .tit h1');
@@ -220,7 +220,7 @@
     if (!wrapper) return;
 
     var rt = this.getCurrentRoomType();
-    var name = (rt && rt.name) || '';
+    var name = this.getRoomtypeName(rt);
 
     var images = this.getCategoryImages(rt, 'roomtype_interior').filter(function (img) {
       return img && img.url;
@@ -292,11 +292,11 @@
     var self = this;
     var currentId = currentRt && currentRt.id;
     var activeRoomtypes = roomtypes.filter(function (rt) {
-      if (!(rt && rt.name && rt.name.trim())) return false;
+      if (!self.getRoomtypeName(rt)) return false;
       var matched = self.getMatchedRoom(rt);
       return !(matched && matched.status === 'inactive');
     });
-    var roomItems = this.getRoomMenuItems(activeRoomtypes, function (rt) { return (rt && rt.name) || ''; });
+    var roomItems = this.getRoomMenuItems(activeRoomtypes);
     // 그룹 안이면 그 그룹의 객실만 펼친다.
     // 헤더/미리보기 메뉴는 그룹명 하나로 접히고 클릭 시 그룹의 첫 객실로 들어가는데,
     // 이 탭까지 접혀 있으면 2번째 객실부터는 UI 로 도달할 방법이 없다.
@@ -308,7 +308,7 @@
     });
     if (activeGroup) {
       roomItems = activeGroup.roomtypes.map(function (rt) {
-        return { label: (rt && rt.name) || '', roomtype: rt, roomtypes: [rt] };
+        return { label: self.getRoomtypeName(rt), roomtype: rt, roomtypes: [rt] };
       });
     }
     roomItems.forEach(function (item) {

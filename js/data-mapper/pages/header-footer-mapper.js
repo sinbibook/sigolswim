@@ -57,12 +57,12 @@
       } else {
         var self = this;
         var firstActive = this.getRoomtypes().filter(function (rt) {
-          return rt.name && rt.name.trim();
+          return !!self.getRoomtypeName(rt);
         }).find(function (rt) {
           var m = self.getMatchedRoom(rt);
           return m && m.status === 'active';
         });
-        var firstItem = this.getRoomMenuItems(firstActive ? [firstActive] : [], function (rt) { return (rt && rt.name) || ''; })[0];
+        var firstItem = this.getRoomMenuItems(firstActive ? [firstActive] : [])[0];
         roomsLink.href = firstItem ? this.getRoomMenuLink(firstItem, 'id') : 'room.html';
       }
     }
@@ -175,7 +175,7 @@
   HeaderFooterMapper.prototype.mapRoomMenu = function () {
     var self = this;
     var roomtypes = this.getRoomtypes();
-    var roomItems = this.getRoomMenuItems(roomtypes, function (rt) { return (rt && rt.name) || ''; });
+    var roomItems = this.getRoomMenuItems(roomtypes);
     var containers = document.querySelectorAll('[data-rooms-submenu], [data-rooms-submenu-mobile]');
     if (!containers.length) return;
 
