@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "1.12.0",
-    "generatedAt": "2026-09-11T08:58:49.716657544Z",
+    "version": "1.13.0",
+    "generatedAt": "2026-09-11T09:04:45.691926052Z",
     "templateType": "trip_e",
     "propertyId": "b16f537e-a7c0-45ea-92c6-7a21a6e9181a",
     "homepageId": "b31e3145-a4ef-43c5-878f-573c4151ad05"
@@ -65,7 +65,7 @@
       {
         "id": "5a8dbaa4-a353-404b-ba4c-acc732b74212",
         "name": "촌캉스",
-        "description": "평상에 둘러앉아 바람을 느끼고,\n정겨운 시골집에서 바쁜 마음을 내려놓고 소소한 순간의 즐거움을 느껴보세요.",
+        "description": "평상에 둘러앉아 바람을 느끼고,\n정겨운 공간에서 바쁜 마음을 내려놓고 소소한 순간의 즐거움을 느껴보세요.",
         "usageGuide": "평상에 둘러앉아 바람을 느끼고,\n정겨운 시골집에서 바쁜 마음을 내려놓고 소소한 순간의 즐거움을 느껴보세요.",
         "displayOrder": 0,
         "images": [
@@ -1237,6 +1237,42 @@
               "isSelected": true,
               "blockId": "fc360930-beca-4b5c-b960-7bc4ca8fd700",
               "category": "roomtype_interior"
+            },
+            {
+              "id": "fcd845b3-505a-4810-a451-485aa2ca270c",
+              "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/roomtype_exterior/1789117484040-xgluuvm365.jpg",
+              "sortOrder": 0,
+              "description": "",
+              "isSelected": true,
+              "blockId": "fc360930-beca-4b5c-b960-7bc4ca8fd700",
+              "category": "roomtype_exterior"
+            },
+            {
+              "id": "4b5ce45d-31a8-4260-aa40-908822953f23",
+              "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/roomtype_exterior/1789117484033-idhwr278r4.jpg",
+              "sortOrder": 1,
+              "description": "",
+              "isSelected": true,
+              "blockId": "fc360930-beca-4b5c-b960-7bc4ca8fd700",
+              "category": "roomtype_exterior"
+            },
+            {
+              "id": "aedeb9d1-2102-42b8-8e4d-0f9aa76c28ef",
+              "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/roomtype_exterior/1789117484037-8isxfax9r3.jpg",
+              "sortOrder": 2,
+              "description": "",
+              "isSelected": true,
+              "blockId": "fc360930-beca-4b5c-b960-7bc4ca8fd700",
+              "category": "roomtype_exterior"
+            },
+            {
+              "id": "30be3e4c-a6b0-4589-af20-dda155bd5e7c",
+              "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/roomtype_exterior/1789117484046-wp901x4q0l.jpg",
+              "sortOrder": 3,
+              "description": "",
+              "isSelected": true,
+              "blockId": "fc360930-beca-4b5c-b960-7bc4ca8fd700",
+              "category": "roomtype_exterior"
             }
           ],
           "nameEn": "독채"
