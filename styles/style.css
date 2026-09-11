@@ -186,7 +186,7 @@
 #atc01 ul li a img{transition:all .4s;}
 #atc01 ul li img{width:550px;height:550px;transition:0.3s}
 #atc01 ul li.on a{border-radius:328px 328px 0 0}
-#atc01 ul li.on img{width:692px;height:620px;border-radius:328px 328px 0 0;transition:0.3s}
+#atc01 ul li.on img{width:692px;height:538px;border-radius:328px 328px 0 0;transition:0.3s}
 #atc01 .swiper-slide-prev{margin-top:0}
 #atc01 .swiper-slide-next{margin-top:200px}
 

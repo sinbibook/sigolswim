@@ -23,6 +23,55 @@
     return created.length === 1 ? created[0] : created;
   };
 
+  // #roomList 슬라이더 초기화 - 즉시 노출 (index-mapper / layout-map-mapper / pages/index.js 공용)
+  // 객실(roomtype)이 1개뿐이면 loop·autoplay·화살표가 모두 의미 없이 돌면서
+  // fade 전환 때문에 한 장짜리 카드가 계속 깜빡인다.
+  // → 슬라이드가 1개 이하면 Swiper 를 만들지 않고 정적 카드로만 노출한다.
+  window.setupRoomSlider = function () {
+    var container = document.querySelector('.room_slider');
+    if (!container) return null;
+
+    var slides = container.querySelectorAll('.swiper-slide');
+    var controls = document.querySelector('#roomList .controls');
+
+    if (slides.length <= 1) {
+      if (container.swiper && !container.swiper.destroyed) {
+        container.swiper.destroy(true, true);
+      }
+      if (window.roomSwiper && !window.roomSwiper.destroyed) {
+        window.roomSwiper.destroy(true, true);
+      }
+      window.roomSwiper = null;
+
+      container.classList.add('single');
+      // .room_list 는 .on 이 붙어야 이미지/정보가 보인다(원래는 slideActiveClass 가 붙여줌)
+      if (slides[0]) slides[0].classList.add('on');
+      // 모바일 미디어쿼리의 display:block 까지 덮어써야 하므로 인라인으로 숨김
+      if (controls) controls.style.display = 'none';
+      return null;
+    }
+
+    container.classList.remove('single');
+    if (controls) controls.style.display = '';
+
+    window.roomSwiper = window.createSwiper('.room_slider', {
+      loop: true,
+      effect: 'fade',
+      speed: 2000,
+      spaceBetween: 0,
+      slideActiveClass: 'on',
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '#roomList .arr.next',
+        prevEl: '#roomList .arr.prev',
+      },
+    });
+    return window.roomSwiper;
+  };
+
   // Swiper 초기화 헬퍼 - 즉시 노출 (pages/[page].js의 ready()에서 사용)
   window.initSwiper = function (container, options) {
     if (container && container.length) {

@@ -342,26 +342,9 @@
     wrapper.addEventListener('click', wrapper._roomImageClickHandler);
 
     // Room Swiper 재초기화 (DOM 업데이트 완료 후)
+    // 슬라이드가 1개면 setupRoomSlider 가 Swiper 없이 정적 카드로 노출한다.
     setTimeout(function() {
-      if (window.roomSwiper) {
-        window.roomSwiper.destroy();
-      }
-
-      window.roomSwiper = createSwiper('.room_slider', {
-      loop: true,
-      effect: 'fade',
-      speed: 2000,
-      spaceBetween: 0,
-      slideActiveClass: 'on',
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-      navigation: {
-        nextEl: '#roomList .arr.next',
-        prevEl: '#roomList .arr.prev',
-      },
-      });
+      if (window.setupRoomSlider) window.setupRoomSlider();
     }, 50);
   };
 
