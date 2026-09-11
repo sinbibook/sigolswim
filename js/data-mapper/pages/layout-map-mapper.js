@@ -48,11 +48,11 @@
     }
 
     var activeRoomtypes = roomtypes.filter(function (rt) {
-      if (!(rt && rt.name && rt.name.trim())) return false;
+      if (!self.getRoomtypeName(rt)) return false;
       var matched = self.getMatchedRoom(rt);
       return matched && matched.status === 'active';
     });
-    var roomItems = this.getRoomMenuItems(activeRoomtypes, function (rt) { return (rt && rt.name) || ''; });
+    var roomItems = this.getRoomMenuItems(activeRoomtypes);
     roomItems.forEach(function (item) {
       var rt = self.getRoomMenuRoomtype(item);
       var roomLabel = self.getRoomMenuLabel(item);
@@ -223,11 +223,11 @@
     }
 
     var activeRoomtypes = roomtypes.filter(function (rt) {
-      if (!(rt && rt.name && rt.name.trim())) return false;
+      if (!self.getRoomtypeName(rt)) return false;
       var matched = self.getMatchedRoom(rt);
       return !(matched && matched.status === 'inactive');
     });
-    var roomItems = this.getRoomMenuItems(activeRoomtypes, function (rt) { return (rt && rt.name) || ''; });
+    var roomItems = this.getRoomMenuItems(activeRoomtypes);
     roomItems.forEach(function (item) {
       var rt = self.getRoomMenuRoomtype(item);
       var roomLabel = self.getRoomMenuLabel(item);

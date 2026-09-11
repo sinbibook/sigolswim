@@ -133,6 +133,15 @@
     return rooms.filter(function (r) { return r.id === roomtype.id; })[0] || null;
   };
 
+  // roomtype 표시용 객실명: roomtypes[i].name → 매칭 rooms[j].name 폴백
+  // (관리자에서 객실명을 비워두면 메뉴/네비에서 항목이 통째로 사라지던 문제 대응)
+  BaseDataMapper.prototype.getRoomtypeName = function (rt) {
+    var own = String((rt && rt.name) || '').trim();
+    if (own) return own;
+    var matched = this.getMatchedRoom(rt);
+    return String((matched && matched.name) || '').trim();
+  };
+
   // roomtype 대표 썸네일 URL: roomtype_thumbnail → roomtype_interior → 그 외 (isSelected, sortOrder순 첫 이미지)
   BaseDataMapper.prototype.getRoomtypeThumbnailUrl = function (rt) {
     var imgs = (rt && rt.images) || [];
@@ -154,13 +163,13 @@
     var self = this;
     var list = roomtypes || [];
     if (!this.hasRoomGroups(list)) {
-      return list.map(function (rt) { return { label: resolveName ? resolveName(rt) : (rt && rt.name) || '', roomtype: rt, roomtypes: [rt] }; });
+      return list.map(function (rt) { return { label: resolveName ? resolveName(rt) : self.getRoomtypeName(rt), roomtype: rt, roomtypes: [rt] }; });
     }
     var seen = {};
     var items = [];
     list.forEach(function (rt) {
       var groupName = self.getRoomGroupName(rt);
-      var label = groupName || (resolveName ? resolveName(rt) : (rt && rt.name) || '');
+      var label = groupName || (resolveName ? resolveName(rt) : self.getRoomtypeName(rt));
       if (!String(label).trim()) return;
       var key = groupName ? 'group:' + groupName : 'room:' + rt.id;
       if (!seen[key]) { seen[key] = { label: label, groupName: groupName, roomtype: rt, roomtypes: [rt] }; items.push(seen[key]); }
