@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "1.11.0",
-    "generatedAt": "2026-09-11T08:47:09.076503562Z",
+    "version": "1.12.0",
+    "generatedAt": "2026-09-11T08:58:49.716657544Z",
     "templateType": "trip_e",
     "propertyId": "b16f537e-a7c0-45ea-92c6-7a21a6e9181a",
     "homepageId": "b31e3145-a4ef-43c5-878f-573c4151ad05"
@@ -1065,6 +1065,7 @@
       "roomtypes": [
         {
           "id": "fc360930-beca-4b5c-b960-7bc4ca8fd700",
+          "name": "독채",
           "images": [
             {
               "id": "ac432fb5-756d-4b44-abb5-8d64cd919d9e",
@@ -1237,7 +1238,8 @@
               "blockId": "fc360930-beca-4b5c-b960-7bc4ca8fd700",
               "category": "roomtype_interior"
             }
-          ]
+          ],
+          "nameEn": "독채"
         }
       ]
     }
