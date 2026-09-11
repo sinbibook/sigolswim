@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "1.17.0",
-    "generatedAt": "2026-09-11T09:27:04.269279800Z",
+    "version": "1.18.0",
+    "generatedAt": "2026-09-11T09:28:22.146297022Z",
     "templateType": "trip_e",
     "propertyId": "b16f537e-a7c0-45ea-92c6-7a21a6e9181a",
     "homepageId": "b31e3145-a4ef-43c5-878f-573c4151ad05"
@@ -630,7 +630,7 @@
                     "id": "f4f5749b-21d2-4c17-8991-009291c8c893",
                     "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/index_essence/1789114850819-8wj04pz7z2.jpg",
                     "sortOrder": 0,
-                    "description": "시골에서 보내는 여유로운 하루",
+                    "description": "정겨운 공간에서 보내는 하루",
                     "isSelected": true,
                     "blockId": null
                   },
