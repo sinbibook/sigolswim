@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "1.5.0",
-    "generatedAt": "2026-09-11T08:28:41.818472962Z",
+    "version": "1.6.0",
+    "generatedAt": "2026-09-11T08:31:19.089707773Z",
     "templateType": "trip_e",
     "propertyId": "b16f537e-a7c0-45ea-92c6-7a21a6e9181a",
     "homepageId": "b31e3145-a4ef-43c5-878f-573c4151ad05"
@@ -599,7 +599,7 @@
                 "description": ""
               },
               "closing": {
-                "title": "",
+                "title": "SLOW DAYS TOGETHER",
                 "images": [
                   {
                     "id": "b6ed7dc9-72f0-42d1-b8a1-6c48b7692bb0",
@@ -684,7 +684,16 @@
             {
               "hero": {
                 "title": "",
-                "images": [ ]
+                "images": [
+                  {
+                    "id": "bc90f862-a3d1-497d-879f-a2d514fbe94d",
+                    "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/directions_hero/1789115477270-2rjie8kgqr.jpg",
+                    "sortOrder": 0,
+                    "description": "",
+                    "isSelected": true,
+                    "blockId": null
+                  }
+                ]
               },
               "notice": {
                 "title": "",
