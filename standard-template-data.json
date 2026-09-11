@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "1.7.0",
-    "generatedAt": "2026-09-11T08:37:28.204046333Z",
+    "version": "1.8.0",
+    "generatedAt": "2026-09-11T08:40:07.012332921Z",
     "templateType": "trip_e",
     "propertyId": "b16f537e-a7c0-45ea-92c6-7a21a6e9181a",
     "homepageId": "b31e3145-a4ef-43c5-878f-573c4151ad05"
@@ -612,7 +612,7 @@
                 ],
                 "videos": [ ],
                 "mediaType": "image",
-                "description": ""
+                "description": "푸른 자연 속에 머물며\n잠시 일상의 속도를 늦춰보세요.\n따스한 햇살과 부드러운 바람을 느끼며\n편안하게 쉬어가는 하루를 보내세요."
               },
               "essence": {
                 "title": "",
