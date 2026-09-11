@@ -1,0 +1,492 @@
+{
+  "homepage": {
+    "id": "b31e3145-a4ef-43c5-878f-573c4151ad05",
+    "domain": "sigolswim.kr",
+    "templateType": "trip_e",
+    "images": [
+      {
+        "logo": [ ]
+      }
+    ],
+    "seo": {
+      "title": "",
+      "description": "",
+      "keywords": "",
+      "naverSiteVerification": "",
+      "googleSiteVerification": ""
+    },
+    "socialLinks": {
+      "facebook": null,
+      "instagram": null,
+      "blog": null,
+      "youtube": null
+    },
+    "customFields": {
+      "pages": {
+        "main": {
+          "sections": [
+            {
+              "hero": {
+                "title": "",
+                "images": [ ],
+                "description": ""
+              },
+              "about": [ ]
+            }
+          ]
+        },
+        "room": [ ],
+        "index": {
+          "sections": [
+            {
+              "hero": {
+                "title": "",
+                "images": [ ],
+                "videos": [ ],
+                "mediaType": "image",
+                "description": ""
+              },
+              "closing": {
+                "title": "",
+                "images": [ ],
+                "videos": [ ],
+                "mediaType": "image",
+                "description": ""
+              },
+              "essence": {
+                "title": "",
+                "images": [ ],
+                "videos": [ ],
+                "mediaType": "image",
+                "description": ""
+              },
+              "gallery": {
+                "title": "",
+                "images": [ ],
+                "videos": [ ],
+                "mediaType": "image",
+                "description": ""
+              },
+              "signature": {
+                "title": "",
+                "images": [ ],
+                "videos": [ ],
+                "mediaType": "image",
+                "description": ""
+              }
+            }
+          ]
+        },
+        "facility": [ ],
+        "layoutMap": {
+          "sections": [
+            {
+              "hero": {
+                "title": "",
+                "images": [ ],
+                "description": ""
+              },
+              "about": {
+                "title": "",
+                "images": [ ],
+                "description": ""
+              },
+              "enabled": false
+            }
+          ]
+        },
+        "directions": {
+          "sections": [
+            {
+              "hero": {
+                "title": "",
+                "images": [ ]
+              },
+              "notice": {
+                "title": "",
+                "description": ""
+              }
+            }
+          ]
+        },
+        "reservation": {
+          "sections": [
+            {
+              "hero": {
+                "title": "",
+                "images": [ ]
+              },
+              "about": {
+                "title": "",
+                "images": [ ],
+                "description": ""
+              }
+            }
+          ]
+        },
+        "nearbyAttractions": {
+          "sections": [
+            {
+              "hero": {
+                "title": "",
+                "images": [ ],
+                "description": ""
+              },
+              "about": [ ],
+              "enabled": false
+            }
+          ]
+        }
+      },
+      "popup": {
+        "popups": [ ]
+      },
+      "theme": {
+        "font": {
+          "koSub": null,
+          "enMain": null,
+          "koMain": null
+        },
+        "color": null
+      },
+      "property": {
+        "images": [
+          {
+            "id": "3dfaefc0-4dce-411b-8333-b5ce093be36d",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/property_thumbnail/1789113586610-mty36vybal.jpg",
+            "sortOrder": 0,
+            "description": "",
+            "isSelected": true,
+            "blockId": null,
+            "category": "property_thumbnail"
+          },
+          {
+            "id": "5a9effc3-eaa0-4c45-b547-493ca7da265e",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/property_exterior/1789113536624-xkofcfkzrl.jpg",
+            "sortOrder": 0,
+            "description": "",
+            "isSelected": true,
+            "blockId": null,
+            "category": "property_exterior"
+          },
+          {
+            "id": "dde896a8-6360-46a0-beda-badc94afd3d2",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/property_exterior/1789113536618-kfkam03fdr.jpg",
+            "sortOrder": 1,
+            "description": "",
+            "isSelected": true,
+            "blockId": null,
+            "category": "property_exterior"
+          },
+          {
+            "id": "e18cdee9-a15c-42ff-8d3b-d3a5f5782189",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/property_exterior/1789113536625-63276litpl.jpg",
+            "sortOrder": 2,
+            "description": "",
+            "isSelected": true,
+            "blockId": null,
+            "category": "property_exterior"
+          },
+          {
+            "id": "0fb1cfec-2a0e-4532-a878-6e902013326c",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/property_exterior/1789113536625-qtep10hpsj.jpg",
+            "sortOrder": 3,
+            "description": "",
+            "isSelected": true,
+            "blockId": null,
+            "category": "property_exterior"
+          },
+          {
+            "id": "548fdef5-99c2-4720-98b4-504eb1923442",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/property_exterior/1789113536626-gt4dqawdai.jpg",
+            "sortOrder": 4,
+            "description": "",
+            "isSelected": true,
+            "blockId": null,
+            "category": "property_exterior"
+          },
+          {
+            "id": "ff20d6a7-a105-49ca-9aa2-f663282a7135",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/property_exterior/1789113536628-xlkbt47zk5.jpg",
+            "sortOrder": 5,
+            "description": "",
+            "isSelected": true,
+            "blockId": null,
+            "category": "property_exterior"
+          },
+          {
+            "id": "28604ad7-049f-48d9-866a-028f21ea3476",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/property_exterior/1789113536648-4cgro5xs81.jpg",
+            "sortOrder": 6,
+            "description": "",
+            "isSelected": true,
+            "blockId": null,
+            "category": "property_exterior"
+          },
+          {
+            "id": "ff6736c1-2f03-42ac-80ee-e3f0aa242e21",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/property_exterior/1789113536652-88mvzn17ul.jpg",
+            "sortOrder": 7,
+            "description": "",
+            "isSelected": true,
+            "blockId": null,
+            "category": "property_exterior"
+          },
+          {
+            "id": "3c8425d6-e7c0-4b75-beb5-fe48e07bc4ee",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/property_exterior/1789113536651-t0gzsbn3s7.jpg",
+            "sortOrder": 8,
+            "description": "",
+            "isSelected": true,
+            "blockId": null,
+            "category": "property_exterior"
+          },
+          {
+            "id": "7c9e010d-8346-4810-ab9f-83f51d2083a7",
+            "url": "https://jlnjajtcnyqupfaqjerz.supabase.co/storage/v1/object/public/app-images/homepage/b31e3145-a4ef-43c5-878f-573c4151ad05/property_exterior/1789113536650-ic0pfn801n.jpg",
+            "sortOrder": 9,
+            "description": "",
+            "isSelected": true,
+            "blockId": null,
+            "category": "property_exterior"
+          }
+        ],
+        "name": "포항 시골쉼 독채 애견동반 펜션",
+        "nameEn": "Pohang Sigolswim Pet-Friendly Pension"
+      },
+      "roomtypes": [
+        {
+          "id": "fc360930-beca-4b5c-b960-7bc4ca8fd700",
+          "images": [ ]
+        }
+      ]
+    }
+  },
+  "property": {
+    "id": "b16f537e-a7c0-45ea-92c6-7a21a6e9181a",
+    "name": "포항 시골쉼 독채 애견동반 펜션",
+    "nameEn": "Pohang Sigolswim Pet-Friendly Pension",
+    "description": "포항의 약 250평 애견 운동장과 노래방, 공용 바비큐장을 갖춘 독채 펜션입니다.",
+    "subtitle": "",
+    "address": "경북 포항시 북구 흥해읍 용연길 30-2 포항 시골쉼 독채 애견동반 펜션",
+    "latitude": 36.1318352356297,
+    "longitude": 129.331560124037,
+    "contactPhone": [ ],
+    "contactEmail": "",
+    "checkin": "15:00",
+    "checkout": "11:00",
+    "checkInOutInfo": "[입퇴실안내]\n- 입실: 15시 00분\n- 퇴실: 11시 00분\n- 입실 마감시간: 23시 00분\n※ 23시 이후 입실 시 숙소로 사전 문의 부탁드립니다.",
+    "usageGuide": "[입퇴실안내]\n- 입실: 15시 00분\n- 퇴실: 11시 00분\n- 입실 마감시간: 23시 00분\n※ 23시 이후 입실 시 숙소로 사전 문의 부탁드립니다.\n\n[공용바베큐]\n[촌캉스 체험 바베큐]\n- 이용 객실: 독채\n- 이용 장소: 전용 야외 바베큐 공간 (평상 완비)\n- 신청 시간: 입실 후~21:00\n- 이용 시간: 제한없음\n- 우천 시 이용 가능\n\n[솥뚜껑 삼겹살]\n- 바베큐 형태: 가마솥 화구를 이용한 솥뚜껑 삼겹살\n- 제공 구성: 가마솥 화구, 가마솥 불판, 장작\n- 이용 요금: 4인 30,000원, 장작 추가 시 10,000원 (1박기준/현장결제)\n\n[숯불 바베큐]\n- 바베큐 형태: 숯불\n- 제공 구성: 숯불, 석쇠\n- 이용 요금: 4인 20,000원, 숯 추가 1인 5,000원 (1박기준/현장결제)\n\n[애견동반]\n- 이용 객실: 독채\n- 이용 요금: 1마리당 10kg 미만 10,000원 / 10kg 이상 20,000원 (1박기준/현장결제)\n- 제한 무게: 제한없음 (대형견도 동반 가능)\n- 제한 마릿수: 제한없음\n- 애견 비품: 개별 지참 필요\n- 반려동물 허용 종류: 반려견만 가능\n\n[애견 플레이그라운드 시설]\n- 약 250평 규모의 마당\n- 인조 잔디, 애견 펜스 설치 완료\n\n[불멍]\n- 이용 객실: 독채\n- 운영 기간: 동절기\n- 이용 장소: 전용 야외 바베큐 공간\n\n[부대시설]\n[노래방]\n- 이용 객실: 독채\n\n[오리백숙/닭백숙 식사]\n- 제공 메뉴: 오리백숙, 닭백숙\n- 이용 요금: 닭백숙 4인 60,000원, 1인 추가 미정 / 오리백숙 미정, 1인 추가 미정 (1박기준/현장결제)\n- 신청 시간: 입실 1일전까지 숙소로 메뉴, 인원 문의 필수\n- 준비 가능 인원: 20명까지 가능\n\n[주차장]\n- 주차장 보유\n- 주차 대수: 제한 없음\n※ 대형버스도 수용 가능합니다.",
+    "reservationGuide": "",
+    "domain": "sigolswim.kr",
+    "realtimeBookingId": "",
+    "ybsId": "",
+    "amenities": [
+      "흡연구역(지정장소)",
+      "주차장"
+    ],
+    "nearbyAttractions": [ ],
+    "services": [ ],
+    "propertyThemes": [ ],
+    "propertyTypes": [ ],
+    "businessInfo": {
+      "businessName": "시골쉼터",
+      "businessNumber": "183-02-03854",
+      "representativeName": "최윤수",
+      "businessAddress": "경상북도 포항시 북구 흥해읍 용연길 30-2",
+      "businessPhone": "",
+      "businessEmail": "choiys5123@naver.com",
+      "businessType": "corporate",
+      "businessCategory": "숙박업",
+      "eCommerceRegistrationNumber": ""
+    },
+    "facilities": [ ],
+    "refundPolicies": [
+      {
+        "refundProcessingDays": 10,
+        "refundRate": 100
+      },
+      {
+        "refundProcessingDays": 9,
+        "refundRate": 90
+      },
+      {
+        "refundProcessingDays": 8,
+        "refundRate": 80
+      },
+      {
+        "refundProcessingDays": 7,
+        "refundRate": 70
+      },
+      {
+        "refundProcessingDays": 6,
+        "refundRate": 60
+      },
+      {
+        "refundProcessingDays": 5,
+        "refundRate": 50
+      },
+      {
+        "refundProcessingDays": 4,
+        "refundRate": 40
+      },
+      {
+        "refundProcessingDays": 3,
+        "refundRate": 30
+      },
+      {
+        "refundProcessingDays": 2,
+        "refundRate": 20
+      },
+      {
+        "refundProcessingDays": 1,
+        "refundRate": 10
+      },
+      {
+        "refundProcessingDays": 0,
+        "refundRate": 0
+      }
+    ],
+    "refundSettings": {
+      "customerRefundNotice": "",
+      "immediateRefundEnabled": true,
+      "immediateRefundMinuteLimit": "10",
+      "sameDayReservationHourLimit": "0"
+    },
+    "images": [
+      {
+        "thumbnail": [ ],
+        "exterior": [ ],
+        "surrounding": [ ],
+        "commonArea": [ ]
+      }
+    ]
+  },
+  "rooms": [
+    {
+      "id": "fc360930-beca-4b5c-b960-7bc4ca8fd700",
+      "name": "독채",
+      "description": "독채형+분리형, 거실1+침대룸(더블침대1)+침대룸(더블침대1)+온돌룸(침구세트2)+온돌룸(침구세트1)+주방2+화장실2\r\n50평\r\n욕실용품,남녀공용,TV,금연,냉장고,에어컨,전기밥솥,취사시설/도구,드라이기,전자레인지,노래방,타월",
+      "roomInfo": "",
+      "usageGuide": "",
+      "group": null,
+      "size": 165.29,
+      "baseOccupancy": 4,
+      "maxOccupancy": 15,
+      "totalRoomCount": {
+        "bedroom": 2,
+        "bathroom": 2,
+        "livingRoom": 1,
+        "ondol": 2,
+        "kitchen": 2
+      },
+      "bedTypes": [
+        "더블 베드",
+        "바닥침구"
+      ],
+      "bedConfigs": [
+        {
+          "roomIndex": 1,
+          "roomKind": "bedroom",
+          "bedCount": {
+            "double": 1,
+            "single": 0,
+            "bunkBed": 0,
+            "queen": 0,
+            "king": 0,
+            "family": 0,
+            "sofaBed": 0,
+            "beddingSet": 0
+          }
+        },
+        {
+          "roomIndex": 2,
+          "roomKind": "bedroom",
+          "bedCount": {
+            "double": 1,
+            "single": 0,
+            "bunkBed": 0,
+            "queen": 0,
+            "king": 0,
+            "family": 0,
+            "sofaBed": 0,
+            "beddingSet": 0
+          }
+        },
+        {
+          "roomIndex": 3,
+          "roomKind": "ondol",
+          "bedCount": {
+            "double": 0,
+            "single": 0,
+            "bunkBed": 0,
+            "queen": 0,
+            "king": 0,
+            "family": 0,
+            "sofaBed": 0,
+            "beddingSet": 2
+          }
+        },
+        {
+          "roomIndex": 4,
+          "roomKind": "ondol",
+          "bedCount": {
+            "double": 0,
+            "single": 0,
+            "bunkBed": 0,
+            "queen": 0,
+            "king": 0,
+            "family": 0,
+            "sofaBed": 0,
+            "beddingSet": 1
+          }
+        }
+      ],
+      "amenities": [
+        "노래방",
+        "전자레인지",
+        "헤어드라이어",
+        "취사시설/도구",
+        "전기밥솥",
+        "에어컨",
+        "냉장고",
+        "금연",
+        "TV",
+        "남녀공용",
+        "욕실용품",
+        "수건"
+      ],
+      "roomViews": [ ],
+      "roomStructures": [
+        "독채",
+        "분리형"
+      ],
+      "status": "active",
+      "timeSettings": {
+        "timeSettingType": "property",
+        "checkin": "15:00",
+        "checkout": "11:00",
+        "checkinDeadline": "23:00"
+      },
+      "roomOptions": {
+        "petState": "Y",
+        "poolState": "N",
+        "barbecueState": "Y"
+      },
+      "images": [
+        {
+          "thumbnail": [ ],
+          "interior": [ ],
+          "exterior": [ ]
+        }
+      ],
+      "displayOrder": 1
+    }
+  ],
+  "metadata": {
+    "generatedAt": "2026-09-11T07:59:47.976443354Z",
+    "propertyId": "b16f537e-a7c0-45ea-92c6-7a21a6e9181a",
+    "homepageId": "b31e3145-a4ef-43c5-878f-573c4151ad05",
+    "version": "1.1.0"
+  }
+}
