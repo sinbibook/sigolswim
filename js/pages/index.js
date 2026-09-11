@@ -98,22 +98,8 @@ window.initIndexSwipers = function () {
     },
   });
 
-  // Room Swiper
-  window.roomSwiper = createSwiper(".room_slider", {
-    loop: true,
-    effect: 'fade',
-    speed: 2000,
-    spaceBetween: 0,
-    slideActiveClass: 'on',
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    navigation: {
-      nextEl: '#roomList .arr.next',
-      prevEl: '#roomList .arr.prev',
-    },
-  });
+  // Room Swiper (객실 1개면 슬라이더 없이 정적 카드)
+  window.setupRoomSlider();
 
   // Special Swiper
   createSwiper(".offer_slide", {
