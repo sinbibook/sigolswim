@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <title>포항 시골쉼 독채 애견동반 펜션</title>
+
+    <link rel="stylesheet" href="styles/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="styles/theme.css">
+    <link rel="stylesheet" type="text/css" href="styles/common.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/popup_black.css">
+
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script type="text/javascript">
+        function setCookie(name, value, expirehours) {
+            var todayDate = new Date();
+            todayDate.setHours(todayDate.getHours() + expirehours);
+            document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";";
+        }
+
+        function closeWin(id, checkbox) {
+            if (checkbox.checked) {
+                setCookie(id, "done", 1);
+            }
+            document.getElementById(id).style.display = "none";
+        }
+    </script>
+  <!-- Open Graph Meta Tags for Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="포항 시골쉼 독채 애견동반 펜션" />
+  <meta property="og:description" content="포항의 약 250평 애견 운동장과 노래방, 공용 바비큐장을 갖춘 독채 펜션입니다." />
+  
+  <meta property="og:url" content="https://sigolswim.kr" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="포항 시골쉼 독채 애견동반 펜션" />
+  <meta name="twitter:description" content="포항의 약 250평 애견 운동장과 노래방, 공용 바비큐장을 갖춘 독채 펜션입니다." />
+  
+</head>
+<body>
+    <script src="js/header-footer-loader.js"></script>
+    <div id="sh_wrapper">
+    <main id="sh_container">
+    
+            <!-- main_banner [s] -->
+            <article>
+                <div id="main_banner">
+                    <div class="swiper-container main_slide">
+                        <!-- MAPPER: nearbyAttractions.sections[0].hero.images[isSelected] → 슬라이드 동적 생성 -->
+                        <div class="swiper-wrapper"></div>
+                    </div>
+                </div>
+            </article>
+            <!-- main_banner [e] -->
+
+            <!-- sh_content [s] -->
+            <div id="sh_content">
+                <!-- nearby attractions [s] -->
+                <div id="facility1004">
+                    <div class="tit">
+                        <span class="deco"></span>
+                        <!-- MAPPER: nearbyAttractions.hero.title (1순위) / 값 없으면 기본값 유지 -->
+                        <h1 data-nearby-title><span>NEARBY</span> ATTRACTIONS</h1>
+                    </div>
+
+                    <div class="cont">
+                        <div class="inner" data-aos="fade-up">
+                            <!-- MAPPER: nearbyAttractions.about[] → 여행지 리스트 (li: 첫 선택 이미지 + dt 제목 + dd 설명) -->
+                            <ul data-nearby-items></ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- nearby attractions [e] -->
+            </div>
+            <!-- sh_content [e] -->
+
+    </main>
+    </div>
+
+    <script src="js/preview-handler.js"></script>
+    <script src="js/image-helpers.js"></script>
+    <script src="js/data-mapper/core/base-mapper.js"></script>
+    <script src="js/data-mapper/pages/nearby-attractions-mapper.js"></script>
+    <script src="js/data-mapper/pages/header-footer-mapper.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/pages/nearby-attractions.js"></script>
+</body>
+</html>

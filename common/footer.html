@@ -1,0 +1,62 @@
+<!-- MAPPER: property.realtimeBookingId → 실시간 예약 버튼 (전 페이지 공통, 한 번만 로드) -->
+<div class="ft_btn_reserve for_m on">
+    <a title="실시간예약창" href="#!" target="_blank" data-booking-link>(<span>Reservation</span>)</a>
+</div>
+
+<footer id="sh_ft">
+    <div class="flex">
+        <div class="left" data-aos="fade-right">
+            <div class="menu">
+                <a href="index.html" class="ft-logo">
+                    <img alt="로고" data-logo>
+                </a>
+                <!-- MAPPER: 헤더 각 대메뉴의 첫 서브메뉴로 이동
+                     ABOUT→main.html / ROOMS→(layoutMap enabled면 layout-map.html, 아니면 첫 객실)
+                     SPECIAL→첫 facility / RESERVE→reservation.html / TRAVEL→nearby-attractions.html -->
+                <div class="ft_nav">
+                    <ul>
+                        <li class="ft_menu">
+                            <a href="main.html">ABOUT</a>
+                        </li>
+                        <li class="ft_menu">
+                            <a href="layout-map.html" data-footer-rooms-link>ROOMS</a>
+                        </li>
+                        <li class="ft_menu">
+                            <a href="facility.html" data-footer-special-link>SPECIAL</a>
+                        </li>
+                        <li class="ft_menu">
+                            <a href="reservation.html">RESERVE</a>
+                        </li>
+                        <li class="ft_menu" data-travel-menu>
+                            <a href="nearby-attractions.html">TRAVEL</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- copyright : 트립일레븐 하드코딩 (매핑 안 함) -->
+            <div class="copy">
+                ⓒ COPYRIGHT©트립일레븐. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+        <div class="right" data-aos="fade-left">
+            <div class="top">
+                <div class="cs">
+                    <p><b>예약문의</b><span data-footer-phone>070-0000-0000</span></p>
+                </div>
+                <!-- MAPPER: businessInfo.businessAddress / businessNumber / representativeName (줄바꿈 유지) -->
+                <div class="add">
+                    <span data-footer-business-info>
+                        주소 : 여기에 주소를 입력하세요<br>
+                        사업자 번호 : 000-00-00000<br>
+                        대표자 : 담당자명
+                    </span><br>
+                    <!-- MAPPER: YBS → property.ybsId (ybsId 빈값이면 숨김, 클릭 시 YBS 예약창) -->
+                    <a class="ybs" data-ybs-button href="#!" style="color:rgba(255, 255, 255, 0.3)" target="_blank">YBS</a>
+                    <div class="pop">
+                        <a class="cs" href="http://design.trip11.net/privacy/privacy_policy.html" target="_blank">개인정보처리방침</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

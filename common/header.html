@@ -1,0 +1,107 @@
+<header id="sh_hd">
+    <div class="sh_lnb_bg" style="display: none;"></div>
+    <div id="shGnb" class="main">
+        <div class="sh_logo">
+            <a href="index.html" class="logo-pc">
+                <img alt="로고" data-logo>
+            </a>
+            <a href="index.html" class="logo-m">
+                <img alt="로고" data-logo>
+            </a>
+        </div>
+        <div class="sh_nav">
+            <ul>
+                <!-- ABOUT -->
+                <li class="depth1">
+                    <a href="#" class="depth1_a"><span>ABOUT</span></a>
+                    <ul class="depth_box">
+                        <li><a href="main.html">외부풍경</a></li>
+                        <li><a href="directions.html">오시는길</a></li>
+                    </ul>
+                </li>
+
+                <!-- ROOMS -->
+                <li class="depth1">
+                    <a href="#" class="depth1_a"><span>ROOMS</span></a>
+                    <ul class="depth_box" data-rooms-submenu>
+                        <li data-layout-map-menu><a href="layout-map.html">미리보기</a></li>
+                        <!-- MAPPER: rooms[].name 동적 생성 -->
+                    </ul>
+                </li>
+
+                <!-- SPECIAL -->
+                <li class="depth1">
+                    <a href="#" class="depth1_a"><span>SPECIAL</span></a>
+                    <ul class="depth_box" data-facility-submenu>
+                        <!-- MAPPER: facilities[].name 동적 생성 -->
+                    </ul>
+                </li>
+
+                <!-- RESERVE -->
+                <li class="depth1">
+                    <a href="#" class="depth1_a"><span>RESERVE</span></a>
+                    <ul class="depth_box">
+                        <li><a data-booking-link href="#!">예약하기</a></li>
+                        <li><a href="reservation.html">이용안내</a></li>
+                    </ul>
+                </li>
+
+                <!-- TRAVEL -->
+                <li class="depth1" data-travel-menu>
+                    <a href="#" class="depth1_a"><span>TRAVEL</span></a>
+                    <ul class="depth_box" data-travel-submenu>
+                        <li><a href="nearby-attractions.html">주변여행지</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <a class="sh_tip ybs" data-ybs-button href="#!" target="_blank">
+            (<span>YBS</span>)
+        </a>
+        <a class="sh_tip" data-booking-link href="#!" target="_blank">
+            (<span>Reservation</span>)
+        </a>
+    </div>
+
+    <!-- 반응형메뉴 [s] -->
+    <div id="topmenuM">
+        <h1 id="m_logo">
+            <a href="index.html">
+                <img alt="로고" data-logo>
+            </a>
+        </h1>
+        <div id="m_navBtn"><span></span></div>
+        <div id="mnavWrap">
+            <div class="inner">
+                <div class="aside_box">
+                    <div class="depth1">ABOUT</div>
+                    <ul class="depth_list">
+                        <li><a href="main.html">외부풍경</a></li>
+                        <li><a href="directions.html">오시는길</a></li>
+                    </ul>
+
+                    <div class="depth1">ROOMS</div>
+                    <ul class="depth_list" data-rooms-submenu-mobile>
+                        <li data-layout-map-menu><a href="layout-map.html">미리보기</a></li>
+                    </ul>
+
+                    <div class="depth1">SPECIAL</div>
+                    <ul class="depth_list" data-facility-submenu-mobile>
+                    </ul>
+
+                    <div class="depth1">RESERVE</div>
+                    <ul class="depth_list">
+                        <li><a data-booking-link href="#!">예약하기</a></li>
+                        <li><a href="reservation.html">이용안내</a></li>
+                    </ul>
+
+                    <div class="depth1" data-travel-menu>TRAVEL</div>
+                    <ul class="depth_list" data-travel-menu>
+                        <li><a href="nearby-attractions.html">주변여행지</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 반응형메뉴 [e] -->
+</header>
