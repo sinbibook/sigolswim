@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "1.27.0",
-    "generatedAt": "2026-09-16T01:29:35.972528683Z",
+    "version": "1.28.0",
+    "generatedAt": "2026-09-16T01:30:19.401463181Z",
     "templateType": "trip_e",
     "propertyId": "b16f537e-a7c0-45ea-92c6-7a21a6e9181a",
     "homepageId": "b31e3145-a4ef-43c5-878f-573c4151ad05"
@@ -25,7 +25,7 @@
     "province": "도/시",
     "city": "시/군/구",
     "domain": "sigolswim.kr",
-    "realtimeBookingId": "bookingplay.co.kr/partner/item/13127/calendar_main",
+    "realtimeBookingId": "https://www.bookingplay.co.kr/booking/1/13127",
     "ybsId": "",
     "amenities": [
       "흡연구역(지정장소)",
