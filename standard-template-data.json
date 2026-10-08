@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "1.31.0",
-    "generatedAt": "2026-09-18T03:07:13.316450228Z",
+    "version": "1.32.0",
+    "generatedAt": "2026-10-08T09:36:24.290534539Z",
     "templateType": "trip_e",
     "propertyId": "b16f537e-a7c0-45ea-92c6-7a21a6e9181a",
     "homepageId": "b31e3145-a4ef-43c5-878f-573c4151ad05"
@@ -15,17 +15,19 @@
     "address": "경북 포항시 북구 흥해읍 용연길 30-2 포항 시골쉼 독채 애견동반 펜션",
     "latitude": 36.1318352356297,
     "longitude": 129.331560124037,
-    "contactPhone": [ ],
+    "contactPhone": [
+      "070-4364-9336"
+    ],
     "contactEmail": "",
     "checkin": "15:00",
     "checkout": "11:00",
     "checkInOutInfo": "[입퇴실안내]\n- 입실: 15시 00분\n- 퇴실: 11시 00분\n- 입실 마감시간: 23시 00분\n※ 23시 이후 입실 시 숙소로 사전 문의 부탁드립니다.",
-    "usageGuide": "[입퇴실안내]\n- 입실: 15시 00분\n- 퇴실: 11시 00분\n- 입실 마감시간: 23시 00분\n※ 23시 이후 입실 시 숙소로 사전 문의 부탁드립니다.\n\n[인원추가정보]\n[연령기준]\n- 성인: 8세 이상\n- 아동: 24개월 이상~8세 미만\n- 유아: 24개월 미만\n\n[추가 요금]\n- 전객실\n- 요금: 성인 1인 20,000원, 아동 1인 20,000원, 유아 무료\n(1박기준/현장결제)\n\n[공용바베큐]\n[촌캉스 체험 바베큐]\n- 이용 객실: 독채\n- 이용 장소: 전용 야외 바베큐 공간 (평상 이용 가능)\n- 신청 시간: 입실 후~21:00\n- 이용 시간: 제한없음\n- 우천 시 이용 가능\n\n[솥뚜껑 삼겹살]\n- 바베큐 형태: 가마솥 화구를 이용한 솥뚜껑 삼겹살\n- 제공 구성: 가마솥 화구, 가마솥 불판, 장작\n- 이용 요금: 4인 30,000원, 장작 추가 시 10,000원 (1박기준/현장결제)\n\n[숯불 바베큐]\n- 바베큐 형태: 숯불\n- 제공 구성: 숯불, 석쇠\n- 이용 요금: 4인 20,000원, 숯 추가 1인 5,000원 (1박기준/현장결제)\n\n[애견동반]\n- 이용 객실: 독채\n- 이용 요금: 1마리당 10kg 미만 10,000원 / 10kg 이상 20,000원 (1박기준/현장결제)\n- 제한 무게: 제한없음 (대형견도 동반 가능)\n- 제한 마릿수: 제한없음\n- 애견 비품: 개별 지참 필요\n- 반려동물 허용 종류: 반려견만 가능\n\n[애견 플레이그라운드 시설]\n- 약 250평 규모의 마당\n- 인조 잔디, 애견 펜스 설치 완료\n\n[불멍]\n- 이용 객실: 독채\n- 운영 기간: 동절기\n- 이용 장소: 전용 야외 바베큐 공간\n\n[부대시설]\n[노래방]\n- 이용 객실: 독채\n- 이용 요금: 무료\n- 이용 시간: 제한없음\n\n[오리백숙/닭백숙]\n- 조리는 촌캉스존에서 투숙객이 직접 진행\n- 제공 재료: 닭, 오리, 밥\n- 이용 요금: 닭 1마리 기준 12,000원, 오리 1마리 70,000원 (1박기준/현장결제)\n- 신청 시간: 입실 1일전까지 숙소로 메뉴, 인원 문의 필수\n- 준비 가능 인원: 20명까지 가능\n\n[주차장]\n- 주차장 보유\n- 주차 대수: 제한 없음\n※ 대형버스도 수용 가능합니다.",
+    "usageGuide": "[입퇴실안내]\n- 입실: 15시 00분\n- 퇴실: 11시 00분\n- 입실 마감시간: 23시 00분\n※ 23시 이후 입실 시 숙소로 사전 문의 부탁드립니다.\n\n[인원추가정보]\n[연령기준]\n- 성인: 8세 이상\n- 아동: 24개월 이상~8세 미만\n- 유아: 24개월 미만\n\n[추가 요금]\n- 전객실\n- 요금: 성인 1인 20,000원, 아동 1인 20,000원, 유아 무료\n(1박기준/현장결제)\n\n[공용바베큐]\n[촌캉스 체험 바베큐]\n- 이용 객실: 독채\n- 이용 장소: 전용 야외 바베큐 공간 (평상 이용 가능)\n- 신청 시간: 입실 후~21:00\n- 이용 시간: 제한없음\n- 우천 시 이용 가능\n\n[솥뚜껑 삼겹살]\n- 바베큐 형태: 가마솥 화구를 이용한 솥뚜껑 삼겹살\n- 제공 구성: 가마솥 화구, 가마솥 불판, 장작\n- 이용 요금: 4인 30,000원, 장작 추가 시 10,000원 (1박기준/현장결제)\n\n[숯불 바베큐]\n- 바베큐 형태: 숯불\n- 제공 구성: 숯불, 석쇠\n- 이용 요금: 4인 20,000원, 숯 추가 1인 5,000원 (1박기준/현장결제)\n\n[애견동반]\n- 이용 객실: 독채\n- 이용 요금: 1마리당 10kg 미만 10,000원 / 10kg 이상 20,000원 (1박기준/현장결제)\n- 제한 무게: 제한없음 (대형견도 동반 가능)\n- 제한 마릿수: 제한없음\n- 애견 비품: 개별 지참 필요\n- 반려동물 허용 종류: 반려견만 가능\n\n[애견 플레이그라운드 시설]\n- 약 250평 규모의 마당\n- 인조 잔디, 애견 펜스 설치 완료\n\n[불멍]\n- 이용 객실: 독채\n- 운영 기간: 동절기\n- 이용 장소: 전용 야외 바베큐 공간\n\n[부대시설]\n[노래방]\n- 이용 객실: 독채\n- 이용 요금: 무료\n- 이용 시간: 제한없음\n\n[오리백숙/닭백숙]\n- 조리는 촌캉스존에서 투숙객이 직접 진행 (재료 대리 구매만 가능)\n- 이용 요금: 닭 1마리 기준 12,000원, 오리 1마리 70,000원 (1박기준/현장결제)\n- 신청 시간: 입실 1일전까지 숙소로 메뉴, 인원 문의 필수\n- 준비 가능 인원: 20명까지 가능\n\n[주차장]\n- 주차장 보유\n- 주차 대수: 제한 없음\n※ 대형 버스도 수용 가능합니다.",
     "reservationGuide": "",
     "province": "도/시",
     "city": "시/군/구",
     "domain": "sigolswim.kr",
-    "realtimeBookingId": "https://map.naver.com/p/entry/place/2088360581",
+    "realtimeBookingId": "https://booking.naver.com/booking/3/bizes/1738214",
     "ybsId": "81277",
     "amenities": [
       "흡연구역(지정장소)",
@@ -246,7 +248,7 @@
         "id": "79540f0e-7a11-4e32-a7bf-c1815b10d7e2",
         "name": "부대시설",
         "description": "",
-        "usageGuide": "[노래방]\n- 이용 객실: 독채\n- 이용 요금: 무료\n- 이용 시간: 제한없음\n\n[오리백숙/닭백숙]\n- 조리는 촌캉스존에서 투숙객이 직접 진행\n- 제공 재료: 닭, 오리, 밥\n- 이용 요금: 닭 1마리 기준 12,000원, 오리 1마리 70,000원 (1박기준/현장결제)\n- 신청 시간: 입실 1일전까지 숙소로 메뉴, 인원 문의 필수\n- 준비 가능 인원: 20명까지 가능",
+        "usageGuide": "[노래방]\n- 이용 객실: 독채\n- 이용 요금: 무료\n- 이용 시간: 제한없음\n\n[오리백숙/닭백숙]\n- 조리는 촌캉스존에서 투숙객이 직접 진행 (재료 대리 구매만 가능)\n- 이용 요금: 닭 1마리 기준 12,000원, 오리 1마리 70,000원 (1박기준/현장결제)\n- 신청 시간: 입실 1일전까지 숙소로 메뉴, 인원 문의 필수\n- 준비 가능 인원: 20명까지 가능",
         "displayOrder": 4,
         "images": [
           {
@@ -444,7 +446,8 @@
       }
     ],
     "tripPropertyId": "13127",
-    "partnerType": "distributor_a"
+    "partnerType": "distributor_a",
+    "tripProviderName": "트립일레븐"
   },
   "rooms": [
     {
@@ -562,7 +565,7 @@
         {
           "thumbnail": [
             {
-              "id": "01a0a6e9-acf0-705c-a14f-2c4bbf86dbc5",
+              "id": "01a0c184-d748-746a-917c-286b2e11b992",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/c1n6ZCpPDeIK.jpg",
               "sortOrder": 1,
               "description": "",
@@ -572,7 +575,7 @@
           ],
           "interior": [
             {
-              "id": "01a0a6e9-acf7-75f1-a521-5c7ef2ad2ca5",
+              "id": "01a0c184-d748-7505-99c7-5c506f22727a",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/CzuHE64Ayta7.jpg",
               "sortOrder": 2,
               "description": "",
@@ -580,7 +583,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-7652-87c6-f77c36ae7af5",
+              "id": "01a0c184-d748-7547-a3bc-62fa5fa74d4d",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/cqMn8uIhaYAB.jpg",
               "sortOrder": 3,
               "description": "",
@@ -588,7 +591,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-7677-a4f9-8cffa1fe88c2",
+              "id": "01a0c184-d748-75ad-897b-daaf31d04ddf",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/zgdRXiT2ZlLO.jpg",
               "sortOrder": 4,
               "description": "",
@@ -596,7 +599,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-76bb-bc04-ccf4b8b17464",
+              "id": "01a0c184-d748-75ff-9bff-92bc8aabd2f8",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/g16HCZux4KFQ.jpg",
               "sortOrder": 5,
               "description": "",
@@ -604,7 +607,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-771f-a140-3d19429ba2bc",
+              "id": "01a0c184-d748-762c-ab0a-fde5603b7570",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/fPvIapg07ln9.jpg",
               "sortOrder": 6,
               "description": "",
@@ -612,7 +615,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-7744-b4e2-8df6c01667f8",
+              "id": "01a0c184-d748-7650-aad0-ce1eb4164e36",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/g0epoHXnTQKc.jpg",
               "sortOrder": 7,
               "description": "",
@@ -620,7 +623,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-7798-a290-8fdfc14b7228",
+              "id": "01a0c184-d748-7661-ac75-1fabf3dc8116",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/t9WzqUIRSPQr.jpg",
               "sortOrder": 8,
               "description": "",
@@ -628,7 +631,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-77ee-8273-5d1e75cc4929",
+              "id": "01a0c184-d748-76ad-8f06-0b69e4873451",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/IvHK4OlTmSRi.jpg",
               "sortOrder": 9,
               "description": "",
@@ -636,7 +639,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-789d-9547-fc1a51bfc20a",
+              "id": "01a0c184-d748-76bf-b47a-8aa8e8908e70",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/NmktFhWwcreY.jpg",
               "sortOrder": 10,
               "description": "",
@@ -644,7 +647,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-78ea-80ca-dd011ed4b549",
+              "id": "01a0c184-d748-76e0-8711-45cb2b5af68f",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/0FCn74QWSTZz.jpg",
               "sortOrder": 11,
               "description": "",
@@ -652,7 +655,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-7938-9309-e8a94861b5c4",
+              "id": "01a0c184-d748-7711-b379-f0136d82fe78",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/3cVrwJqitD07.jpg",
               "sortOrder": 12,
               "description": "",
@@ -660,7 +663,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-797f-abc5-3f4a668a5339",
+              "id": "01a0c184-d748-7736-ace7-ad4dc14a13d2",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/7qJw6UkEvODg.jpg",
               "sortOrder": 13,
               "description": "",
@@ -668,7 +671,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-79a2-a768-b23c0bffe580",
+              "id": "01a0c184-d748-7746-97f7-69529d2d3ac8",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/ZvAwKcDy0EtS.jpg",
               "sortOrder": 14,
               "description": "",
@@ -676,7 +679,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-7a0c-9e23-d7dd425870f1",
+              "id": "01a0c184-d748-7769-895f-81d26e008525",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/15/ZUdIv9Ewj6nG.jpg",
               "sortOrder": 15,
               "description": "",
@@ -684,7 +687,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-7a3a-bd06-fc254a9f31f3",
+              "id": "01a0c184-d748-778c-98df-b5418b39c99f",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/15/mS2MIy3oYxFi.jpg",
               "sortOrder": 16,
               "description": "",
@@ -692,7 +695,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-7a81-a4a0-10dae2ec0a09",
+              "id": "01a0c184-d748-77ad-ab82-edc9d51564c8",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/b039hl6pQ8jJ.jpg",
               "sortOrder": 17,
               "description": "",
@@ -700,7 +703,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-7b0a-be4a-7a8ffaf247bd",
+              "id": "01a0c184-d748-77dd-934e-b5c59a8b8d5e",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/KIEaS3LTNCGP.jpg",
               "sortOrder": 18,
               "description": "",
@@ -708,7 +711,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-7b4d-872d-d108459c5aab",
+              "id": "01a0c184-d748-77fe-9688-0a59da755af7",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/BRq2vkhQpIL8.jpg",
               "sortOrder": 19,
               "description": "",
@@ -716,7 +719,7 @@
               "blockId": null
             },
             {
-              "id": "01a0a6e9-acf7-7b7a-b595-b96b2b3d2fcf",
+              "id": "01a0c184-d748-7820-8461-612ec61b2cb1",
               "url": "https://bookingplay-media.s3.amazonaws.com/room_images/2026/09/14/cTk68ihCnyZ9.jpg",
               "sortOrder": 20,
               "description": "",
