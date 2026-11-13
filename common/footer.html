@@ -1,8 +1,21 @@
-<!-- MAPPER: property.realtimeBookingId → 실시간 예약 버튼 (전 페이지 공통, 한 번만 로드) -->
-<div class="ft_btn_reserve for_m on">
-    <a title="실시간예약창" href="#!" target="_blank" data-booking-link>(<span>Reservation</span>)</a>
+<!-- 우측 하단 플로팅 버튼 2개. 상담하기(아래) + 예약하기(위) 순으로 쌓인다.
+     예약하기는 `for_m` 이라 모바일에서만 뜨고, 상담하기는 총판A + tripPropertyId 가
+     있을 때 전 화면폭에서 뜬다 (header-footer-mapper.mapConsult). -->
+
+<!-- data-* 속성 : data-consult-button (property.tripPropertyId + partnerType)
+     상담 URL 은 `https://www.bookingplay.co.kr/api/cti_eicn/kakao_happy_talk?tid={tripPropertyId}` -->
+<div id="talk_custom_button" data-consult-wrap>
+  <a title="상담하기" href="#!" target="_blank" data-consult-button>
+    <img src="images/consult.png" alt="상담하기" />
+  </a>
 </div>
 
+<!-- data-* 속성 : data-booking-link (property.realtimeBookingId) -->
+<div class="ft_btn_reserve for_m on">
+  <a title="예약하기" href="#!" target="_blank" data-booking-link>
+    <img src="images/talk.png" alt="예약하기" />
+  </a>
+</div>
 <footer id="sh_ft">
     <div class="flex">
         <div class="left" data-aos="fade-right">
@@ -33,13 +46,20 @@
                     </ul>
                 </div>
             </div>
-            <!-- copyright : 트립일레븐 하드코딩 (매핑 안 함) -->
-            <div class="copy">
+            <!-- copyright : property.tripProviderName 으로 치환 (data-copyright), 값이 없으면 아래 문구 유지 -->
+            <div class="copy" data-copyright="ⓒ COPYRIGHT©{provider}. ALL RIGHTS RESERVED.">
                 ⓒ COPYRIGHT©트립일레븐. ALL RIGHTS RESERVED.
             </div>
         </div>
         <div class="right" data-aos="fade-left">
             <div class="top">
+                <!-- data-* 속성 : data-footer-rural-stay-mark-wrap (customFields.footer.ruralStayMarks 또는 기존 ruralStayMark 가 있을 때만 노출, 기본 숨김)
+                     data-footer-rural-stay-mark : 농어촌민박사업자 이미지 (표시마크 + 신고번호, alt = description)
+                     노출 시 매퍼가 #sh_ft 에 has-rural-stay-mark 를 붙여 고정 높이를 풀어 준다 -->
+                <div class="ft_rural_stay_mark_wrap" data-footer-rural-stay-mark-wrap style="display: none">
+                    <img class="ft_rural_stay_mark" src="" alt="농어촌민박사업자" data-footer-rural-stay-mark>
+                    <img class="ft_rural_stay_mark" src="" alt="농어촌민박사업자" data-footer-rural-stay-mark>
+                </div>
                 <div class="cs">
                     <p><b>예약문의</b><span data-footer-phone>070-0000-0000</span></p>
                 </div>
@@ -52,6 +72,7 @@
                     </span><br>
                     <!-- MAPPER: YBS → property.ybsId (ybsId 빈값이면 숨김, 클릭 시 YBS 예약창) -->
                     <a class="ybs" data-ybs-button href="#!" style="color:rgba(255, 255, 255, 0.3)" target="_blank">YBS</a>
+                    <a class="ybs" href="#" target="_blank" rel="noopener noreferrer" data-calendar-wrap data-calendar-link style="display: none; color:rgba(255, 255, 255, 0.3)">실시간 달력</a>
                     <div class="pop">
                         <a class="cs" href="http://design.trip11.net/privacy/privacy_policy.html" target="_blank">개인정보처리방침</a>
                     </div>

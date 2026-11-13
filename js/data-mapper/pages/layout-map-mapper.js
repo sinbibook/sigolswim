@@ -9,9 +9,8 @@
 
   LayoutMapMapper.prototype.mapPage = function () {
     // 명시적으로 enabled === false 일 때만 404 (데이터 미도착/부분 갱신 시엔 리다이렉트 안 함)
-    var pages = this.getPages();
-    var section = pages.layoutMap && pages.layoutMap.sections && pages.layoutMap.sections[0];
-    if (section && section.enabled === false) {
+    // 헤더 "미리보기" 숨김, 푸터 ROOMS 이동처(첫 객실 상세)도 같은 기준(isLayoutMapEnabled)으로 정한다.
+    if (!this.isLayoutMapEnabled()) {
       window.location.href = '404.html';
       return;
     }
@@ -185,8 +184,9 @@
     // Property nameEn (customFields.property.nameEn 우선, 없으면 property.nameEn, 둘 다 없으면 빼고)
     var englishNameEl = document.querySelector('[data-property-english-name]');
     var propertyNameEn = this.getPropertyNameEn();
-    if (englishNameEl && propertyNameEn) {
-      englishNameEl.textContent = propertyNameEn;
+    if (englishNameEl) {
+      englishNameEl.textContent = propertyNameEn || '';
+      this.fitRoomPreviewTitle(englishNameEl);
     }
 
     // 설명: layoutMap.hero.description 1순위 → 없으면 빈 값 (하드코딩 기본 설명 없음)
@@ -227,10 +227,11 @@
       var matched = self.getMatchedRoom(rt);
       return !(matched && matched.status === 'inactive');
     });
-    var roomItems = this.getRoomMenuItems(activeRoomtypes);
-    roomItems.forEach(function (item) {
-      var rt = self.getRoomMenuRoomtype(item);
-      var roomLabel = self.getRoomMenuLabel(item);
+    // Room Preview 카드는 groupName 과 무관하게 **항상 전체 객실**을 깐다.
+    // 그룹으로 접히는 곳은 헤더 ROOMS 메뉴와 객실 상세 탭뿐이고,
+    // 카드는 저마다 자기 객실 상세로 연결한다.
+    activeRoomtypes.forEach(function (rt) {
+      var roomLabel = self.getRoomtypeName(rt);
       if (!rt || !String(roomLabel).trim()) return;
       var matched = self.getMatchedRoom(rt);
 
@@ -242,7 +243,7 @@
 
       var link = document.createElement('a');
       link.className = 'link';
-      link.href = self.getRoomMenuLink(item);
+      link.href = self.getRoomMenuLink(rt);
 
       var imgDiv = document.createElement('div');
       imgDiv.className = 'img';
@@ -278,7 +279,7 @@
 
       var roomBtn = document.createElement('a');
       roomBtn.className = 'room_btn';
-      roomBtn.href = self.getRoomMenuLink(item);
+      roomBtn.href = self.getRoomMenuLink(rt);
       roomBtn.innerHTML = '(<span>Learn More</span>)';
 
       infoDiv.appendChild(nameP);

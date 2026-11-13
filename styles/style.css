@@ -199,17 +199,6 @@
 #atc01 .pager span:first-child::before{content:"(";display:inline-block;position:absolute;left:-20px;width:20px;height:20px}
 #atc01 .pager span:last-child::before{content:")";display:inline-block;position:absolute;right:-35px;width:20px;height:20px}
 
-/* 모바일 우측하단 예약 버튼 (PC ( Reservation ) 스타일 → 둥근 배경) */
-.ft_btn_reserve.on {position:fixed; bottom:20px; right:12px; z-index:9999;}
-.ft_btn_reserve.on > a{
-    display:inline-flex; align-items:center; justify-content:center;
-    padding:14px 22px; border-radius:50px;
-    background:var(--color-secondary); color:#fff;
-    font-family:var(--font-en-main); font-size:14px; letter-spacing:0.5px;
-    white-space:nowrap; box-shadow:0 4px 14px rgba(0,0,0,.25);
-}
-.ft_btn_reserve.on > a > span{padding:0 4px;}
-
 /* 반응형 [s] */
 @media (hover:hover){
     #atc01 .controls .arr:hover{opacity:1}
@@ -446,6 +435,13 @@
 #roomList .tit_area div p{padding-top:20px;font-size:56px;font-weight:300;line-height:1.2;color:var(--color-secondary);font-family:var(--font-en-main)}
 #roomList .tit_area div p span{display:block;font-weight:300;line-height:1;color:var(--color-secondary)}
 #roomList .tit_area > b{padding-top:60px;font-weight:400;white-space:pre-line;line-height: 1.25;color:#333;}
+
+/* 객실 미리보기 제목 */
+@media (min-width:1025px){
+    #roomList .tit_area.room_tit div{width:min(900px, 75%)}
+    #roomList .tit_area.room_tit div p{font-size:clamp(30px, 2.2vw, 46px)}
+    #roomList .tit_area.room_tit [data-property-english-name]{white-space:nowrap}
+}
 
 /* 슬라이드*/
 #roomList .room_slide{height:720px;padding-bottom:220px}
@@ -714,7 +710,9 @@
 #expense1004 .vimg li:nth-child(4){animation-delay:0.75s;}
 
 @media(hover:hover){
-    #expense1004 .golink li a:hover{border:1px solid var(--color-secondary);color:#fff;background:var(--color-secondary)}
+    /* ⚠️ 이 버튼은 secondary 브라운 띠 위에 얹힌다 — 다른 페이지 golink 처럼
+       secondary 로 채우면 배경에 그대로 묻힌다. 반투명 흰색으로 채운다. */
+    #expense1004 .golink li a:hover{border:1px solid #fff;color:#fff;background:rgba(255,255,255,0.2);opacity:1}
     #expense1004 .rv_slider .arrow span:hover{opacity:1}
 }
 @media(max-width:1550px){
@@ -774,6 +772,10 @@
 
     #expense1004{font-size:14px}
     #expense1004 .tit{margin-bottom:20px}
+    /* 객실명이 길 때(예: "오늘(25년10월리모델링/노래방/…)") 화면 밖으로 삐져나가지 않게.
+       ⚠️ #expense1004 * 의 word-break:keep-all 때문에 슬래시로 이어진 한 덩어리가
+          통째로 안 꺾인다 — 이 제목에서만 필요할 때 꺾도록 풀어 준다. */
+    #expense1004 .tit h1{padding:0 20px;word-break:break-all;overflow-wrap:anywhere;line-height:1.35}
     #expense1004 .room_if .info{flex-direction:column}
     #expense1004 .room_if .l_cont{width:100%}
     #expense1004 .r_cont {top:10%;}
@@ -781,7 +783,7 @@
     #expense1004 .rv_slider{margin:80px 0 0}
     #expense1004 .rv_slider li{width:400px;height:350px}
     #expense1004 .rv_slider li.on {height:350px;}
-    #expense1004 .room_vw{padding:50px 0;background:var(--color-primary)}
+    #expense1004 .room_vw{padding:50px 0;background:var(--color-secondary)}
     #expense1004 .room_vw h2{padding:0 0 15px}
     #expense1004 .room_vw p{padding:0 10px}
     #expense1004 .room_vw:after{display:none}
@@ -821,6 +823,24 @@
     #expense1004 .rv_slider li.on {height:270px;}
     #expense1004 .r_cont {width:40%;top:23.5%;}
     #expense1004 .r_cont2 {top:24%;}
+}
+
+/* 예약하기(.r_cont) — 모바일에서는 절대배치를 풀고 슬라이더 아래로 내린다.
+   ⚠️ 데스크톱은 .room_vw:after 의 secondary 띠 위에 얹는 디자인이라 top:9% 로 띄우지만,
+      768px 이하에서는 그 띠가 사라지고(:after display:none) 이미지 높이가 폭마다 달라져
+      %-top 이 사진 한가운데로 떨어졌다. 글씨가 흰색 + opacity:.5 라 사진 위에서는
+      사실상 안 보인다. 폭별 top 값(23.2% / 25% / 23.5% …)을 계속 손보는 대신 흐름에 맡긴다.
+   ⚠️ 이 블록은 아래 breakpoint 들의 .r_cont 규칙보다 뒤에 와야 이긴다 — 위로 옮기지 말 것. */
+@media(max-width:768px){
+    /* 브라운 띠를 버튼까지 이어 붙인다 — room_vw 의 아래 여백을 r_cont 가 대신 낸다.
+       ⚠️ display:flow-root 필수 — padding-bottom 이 0 이면 .rv_slider 의 bottom margin
+          (480px 이하에서 margin:20px)이 room_vw 밖으로 새어 나가 브라운 띠가 끊기고
+          그 자리에 흰 줄이 생긴다(마진 상쇄). */
+    #expense1004 .room_vw{padding-bottom:0;display:flow-root}
+    /* margin-top:-1px — 같은 색 블록 두 개가 맞닿는 경계에서 소수점 높이 때문에
+       1px 이음매(밝은 선)가 보인다. 1px 겹쳐서 없앤다. */
+    #expense1004 .r_cont{position:static;width:auto;transform:none;margin-top:-1px;padding:31px 0 50px;text-align:center;background:var(--color-secondary)}
+    #expense1004 .golink{display:inline-block;width:200px;max-width:70%}
 }
 
 /* =========================== 객실 세부[e] */
@@ -1247,254 +1267,20 @@ map
 @media only screen and (max-width:350px) {
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* room_floorplan — 객실 평면도 (이미지 한 장만, 제목 없음)
+   ⚠️ 기본값이 `display:none` 이다 — 매퍼가 이미지를 찾았을 때만 풀어준다. */
+.room_floorplan {
+  padding: 90px 20px;
+  text-align: center;
+}
+.room_floorplan img {
+  display: inline-block;
+  max-width: 1440px;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 1024px) {
+  .room_floorplan {
+    padding: 50px 20px;
+  }
+}

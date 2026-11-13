@@ -36,6 +36,7 @@
   RoomMapper.prototype.mapPage = function () {
     this.mapRoomDetail();
     this.mapAmenities();
+    this.mapFloorplan();
     this.mapRoomPreview();
     this.mapRoomNavigation();
     // mapPropertyNames() 는 호출하지 않는다 — RoomMapper 에도 BaseDataMapper 에도
@@ -188,13 +189,14 @@
       });
     }
 
-    // .room_if .txt: customFields hero title 우선 → 입력 안 했으면 room.description fallback (\n→<br>)
+    // .room_if .txt: customFields hero title 만 노출 (\n→<br>). room.description 은 폴백으로 쓰지 않는다.
     // 빈 값도 항상 반영 → 프리뷰에서 실시간으로 지워지고 바뀜
     var descEl = document.querySelector('.room_if .txt');
     if (descEl) {
       var heroTitle = this.getRoomHeroTitle(rt);
-      var txt = (heroTitle && heroTitle.trim()) ? heroTitle : ((room && room.description) || '');
+      var txt = (heroTitle && heroTitle.trim()) ? heroTitle : '';
       descEl.innerHTML = txt.replace(/\n/g, '<br>');
+      descEl.style.display = txt ? '' : 'none';
     }
 
     // golink 버튼 매핑 (property.realtimeBookingId 사용)
@@ -320,6 +322,35 @@
       if (self.isRoomMenuItemActive(item, currentId)) li.className = 'on';
       li.appendChild(link);
       ul.appendChild(li);
+    });
+  };
+
+  /* MAPPER: roomtypes[current] 평면도 이미지 → [data-room-floorplan-image]
+     ⚠️ 제목·설명 자리가 없다. 도면 이미지 한 장이 전부다.
+     ⚠️ 이미지가 없으면 [data-room-floorplan-section] 을 통째로 숨긴다 —
+        원본에 없던 빈 구간을 남기지 않는다.
+        (layout-map 의 배치도는 반대로 없어도 placeholder 를 세운다 — 규칙이 정반대다.)
+     ⚠️ URL 이 있는데 로드가 죽어도 구간째 숨긴다 — 깨진 아이콘만 남는 것보다 낫다. */
+  RoomMapper.prototype.mapFloorplan = function () {
+    var sections = document.querySelectorAll('[data-room-floorplan-section]');
+    if (!sections.length) return;
+
+    var image = this.getRoomFloorplanImage(this.getCurrentRoomType());
+    var url = (image && image.url) || '';
+
+    sections.forEach(function (el) {
+      el.style.display = url ? '' : 'none';
+    });
+    if (!url) return;
+
+    document.querySelectorAll('[data-room-floorplan-image]').forEach(function (img) {
+      img.alt = '객실 평면도';
+      img.onerror = function () {
+        sections.forEach(function (el) {
+          el.style.display = 'none';
+        });
+      };
+      img.src = url;
     });
   };
 
