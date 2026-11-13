@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "1.40.0",
-    "generatedAt": "2026-11-13T05:04:41.370109248Z",
+    "version": "1.41.0",
+    "generatedAt": "2026-11-13T05:04:58.945235175Z",
     "templateType": "trip_e",
     "propertyId": "b16f537e-a7c0-45ea-92c6-7a21a6e9181a",
     "homepageId": "b31e3145-a4ef-43c5-878f-573c4151ad05"
@@ -29,6 +29,9 @@
     "domain": "sigolswim.kr",
     "realtimeBookingId": "https://booking.naver.com/booking/3/bizes/1738214",
     "ybsId": "81277",
+    "tripPropertyId": "13127",
+    "partnerType": "distributor_a",
+    "tripProviderName": "트립일레븐",
     "amenities": [
       "주차장",
       "흡연구역(지정장소)"
@@ -509,10 +512,7 @@
         "surrounding": [ ],
         "commonArea": [ ]
       }
-    ],
-    "tripPropertyId": "13127",
-    "partnerType": "distributor_a",
-    "tripProviderName": "트립일레븐"
+    ]
   },
   "rooms": [
     {

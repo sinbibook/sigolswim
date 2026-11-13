@@ -94,23 +94,26 @@ class PopupManager {
             .filter(p => {
                 if (!p.enabled) return false;
                 if (!this.isWithinDisplayPeriod(p, today)) return false;
-                return this.getSelectedImages(p).length > 0;
+                return this.getPopupMedia(p).length > 0;
             })
             .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
 
-        // 각 팝업의 선택 이미지마다 박스 1개 (여러 박스 동시 표시)
-        // "오늘 하루 보지 않기"는 박스(boxId) 단위 → 같은 팝업의 다른 이미지는 영향 없음
+        // 각 팝업의 노출 미디어(선택 이미지들 + 노출 영상)마다 박스 1개 (여러 박스 동시 표시)
+        // "오늘 하루 보지 않기"는 박스(boxId) 단위 → 같은 팝업의 다른 미디어는 영향 없음
         this.boxes = [];
         activePopups.forEach(p => {
-            this.getSelectedImages(p).forEach((url, idx) => {
-                const boxId = p.id + '_' + idx;
+            this.getPopupMedia(p).forEach((media) => {
+                const boxId = this.getBoxId(p, media);
                 // preview는 sessionStorage, 실사이트는 localStorage 기준으로 숨김 상태를 유지한다.
                 // 프리뷰에서도 편집 중 데이터 갱신마다 닫은 팝업이 다시 뜨지 않게 한다.
                 if (this.isHiddenToday(boxId)) return;
                 this.boxes.push({
                     boxId: boxId,
                     popupId: p.id,
-                    url: url,
+                    // 백오피스에서 고른 팝업 폭(px). 없으면 기본 폭
+                    width: Number(p.width) > 0 ? Number(p.width) : PopupManager.DEFAULT_BOX_WIDTH,
+                    mediaKind: media.kind,
+                    url: media.url,
                     link: (p.link && p.link.trim()) ? p.link.trim() : '',
                     title: p.title || '',
                     description: p.description || ''
@@ -146,8 +149,8 @@ class PopupManager {
     }
 
     clearHiddenForPopup(popup) {
-      this.getSelectedImages(popup).forEach((url, idx) => {
-        const boxId = popup.id + '_' + idx;
+      this.getPopupMedia(popup).forEach((media) => {
+        const boxId = this.getBoxId(popup, media);
         try {
           this._dismissStore().removeItem('popup_hidden_' + boxId);
         } catch (e) {
@@ -157,17 +160,49 @@ class PopupManager {
     }
 
     /**
-     * 팝업에서 isSelected 이미지 URL 배열 (없으면 첫 이미지)
+     * 박스 id = 팝업 id + 미디어 고유값. "오늘 하루 보지 않기" 저장 키로도 쓴다.
+     * 순번을 쓰면 미디어를 추가·삭제할 때 다른 미디어가 숨겨지므로 미디어마다 바뀌지 않는 값을 쓴다.
+     */
+    getBoxId(popup, media) {
+        return popup.id + '_' + media.key;
+    }
+
+    /**
+     * 팝업의 노출 미디어 목록 [{ kind: 'image' | 'video', url, key }]
+     * - 선택 이미지들과 노출 영상 1개를 함께 띄운다 (있는 것만)
+     * - key 는 미디어 id (없는 예전 데이터는 url)
+     */
+    getPopupMedia(popup) {
+        const toMedia = (kind, item) => ({ kind: kind, url: item.url, key: item.id || item.url });
+        const media = this.getSelectedImages(popup).map(img => toMedia('image', img));
+        const video = this.getSelectedVideo(popup);
+        if (video) media.push(toMedia('video', video));
+        return media;
+    }
+
+    /**
+     * 팝업에서 노출(isSelected) 영상 (없으면 첫 영상, 영상이 없으면 null)
+     */
+    getSelectedVideo(popup) {
+        if (!popup || !Array.isArray(popup.videos)) return null;
+        const videos = popup.videos
+            .filter(video => video && video.url)
+            .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+        const selected = videos.find(video => video.isSelected === true);
+        if (selected) return selected;
+        return videos.length ? videos[0] : null;
+    }
+
+    /**
+     * 팝업에서 isSelected 이미지 배열 (없으면 첫 이미지)
      */
     getSelectedImages(popup) {
         if (!popup || !Array.isArray(popup.images)) return [];
         const selected = popup.images.filter(img => img && img.isSelected === true && img.url);
         if (selected.length) {
-            return selected
-                .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0))
-                .map(img => img.url);
+            return selected.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
         }
-        if (popup.images[0] && popup.images[0].url) return [popup.images[0].url];
+        if (popup.images[0] && popup.images[0].url) return [popup.images[0]];
         return [];
     }
 
@@ -243,8 +278,8 @@ class PopupManager {
     }
 
     /**
-     * 이미지 원본 비율(naturalWidth/Height)로 박스 폭을 계산해 적용
-     * → 잘림 없음 + 좌우 빈 여백 없음 (세로로 긴 이미지는 화면 높이에 맞춰 축소)
+     * 이미지·영상 원본 비율로 박스 폭을 계산해 적용
+     * → 잘림 없음 + 좌우 빈 여백 없음 (세로로 긴 이미지·영상은 화면 높이에 맞춰 축소)
      */
     fitBoxes(onReady) {
         const imgs = this.container.querySelectorAll('.popup-image');
@@ -257,7 +292,7 @@ class PopupManager {
         };
 
         imgs.forEach((img) => {
-            if (img.complete && img.naturalWidth) {
+            if (PopupManager.isMediaReady(img)) {
                 this.fitBox(img);
             } else {
                 pending++;
@@ -265,7 +300,8 @@ class PopupManager {
                     this.fitBox(img);
                     if (--pending === 0) finish();
                 };
-                img.addEventListener('load', settle, { once: true });
+                // 영상은 크기를 알 수 있는 loadedmetadata 까지만 기다린다
+                img.addEventListener(img.tagName === 'VIDEO' ? 'loadedmetadata' : 'load', settle, { once: true });
                 img.addEventListener('error', settle, { once: true });
             }
         });
@@ -288,16 +324,20 @@ class PopupManager {
      */
     fitBox(img) {
         const box = img.closest('.popup-content');
-        if (!box || !img.naturalWidth || !img.naturalHeight) return;
+        const size = PopupManager.getMediaSize(img);
+        if (!box || !size.width || !size.height) return;
 
         const CHROME_W = 22;  // 좌우 padding(10*2) + border(1*2)
         const CHROME_H = 80;  // 상하 padding + 푸터(35) + 푸터 상단 여백(10) + border + 여유
 
-        const maxW = Math.min(window.innerWidth * 0.9, PopupManager.MAX_BOX_WIDTH) - CHROME_W;
+        const boxWidth = Number(box.dataset.boxWidth) || PopupManager.DEFAULT_BOX_WIDTH;
+        const maxW = Math.min(window.innerWidth * 0.9, boxWidth) - CHROME_W;
         const maxH = window.innerHeight * 0.9 - CHROME_H;
-        const ratio = img.naturalWidth / img.naturalHeight;
+        const ratio = size.width / size.height;
 
-        let w = Math.min(img.naturalWidth, maxW);
+        // 고른 폭으로 고정하고 이미지는 폭 100% 로 채운다.
+        // 세로가 화면을 넘는 이미지만 비율을 유지한 채 폭을 줄인다 (닫기 버튼이 화면 안에 남도록)
+        let w = maxW;
         if (w / ratio > maxH) w = maxH * ratio;
         w = Math.max(w, 1);
 
@@ -335,10 +375,15 @@ class PopupManager {
      */
     renderBox(box) {
         const hasText = (box.title && box.title.trim()) || (box.description && box.description.trim());
-        // 원본 비율 그대로 노출(잘림 없음) → background cover 대신 <img> 사용
+        // 원본 비율 그대로 노출(잘림 없음) → background cover 대신 <img> / <video> 사용
+        // 영상은 음소거 자동재생·반복. 재생/정지 버튼만 둔다 (소리 켜기 없음)
+        const media = box.mediaKind === 'video'
+            ? `<video class="popup-image popup-video" src="${this.escapeHtml(box.url)}" muted autoplay loop playsinline preload="metadata"></video>
+                <button type="button" class="popup-video-toggle" data-action="toggle-video" aria-label="영상 정지">❚❚</button>`
+            : `<img class="popup-image" src="${this.escapeHtml(box.url)}" alt="${this.escapeHtml(box.title || '팝업 이미지')}">`;
         const imageInner = `
             <div class="popup-image-wrap">
-                <img class="popup-image" src="${this.escapeHtml(box.url)}" alt="${this.escapeHtml(box.title || '팝업 이미지')}">
+                ${media}
                 ${hasText ? `
                     <div class="popup-text-content">
                         ${box.title && box.title.trim() ? `<h3 class="popup-title">${this.escapeHtml(box.title)}</h3>` : ''}
@@ -352,7 +397,7 @@ class PopupManager {
             : imageInner;
 
         return `
-            <div class="popup-content" data-box-id="${this.escapeHtml(box.boxId)}">
+            <div class="popup-content" data-box-id="${this.escapeHtml(box.boxId)}" data-box-width="${box.width}" style="max-width: min(90vw, ${box.width}px)">
                 <button class="popup-close" data-action="close-box" aria-label="팝업 닫기">&times;</button>
                 ${image}
                 <div class="popup-footer">
@@ -389,6 +434,32 @@ class PopupManager {
                 self.hideToday(boxId);
                 self.closeBox(content);
             });
+        });
+
+        // 영상: 음소거 자동재생을 보장하고, 재생/정지 버튼 연결
+        this.container.querySelectorAll('.popup-video').forEach((video) => {
+            video.muted = true;
+            const toggle = video.parentNode.querySelector('[data-action="toggle-video"]');
+            const syncToggle = () => {
+                if (!toggle) return;
+                toggle.textContent = video.paused ? '▶' : '❚❚';
+                toggle.setAttribute('aria-label', video.paused ? '영상 재생' : '영상 정지');
+            };
+            video.addEventListener('play', syncToggle);
+            video.addEventListener('pause', syncToggle);
+            if (toggle) {
+                // 링크 팝업이어도 버튼 클릭은 이동하지 않게 막는다
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (video.paused) {
+                        video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                    }
+                });
+            }
+            video.play().catch(() => syncToggle());
         });
 
         // 배경(오버레이 빈 영역) 클릭 → 전체 닫기
@@ -467,8 +538,18 @@ class PopupManager {
     }
 }
 
-// 팝업 박스 최대 가로폭 (styles/popup.css .popup-content max-width 와 동일하게 유지)
-PopupManager.MAX_BOX_WIDTH = 700;
+// 팝업 폭을 고르지 않은 팝업의 기본 폭 (styles/popup.css .popup-content max-width 와 동일하게 유지)
+PopupManager.DEFAULT_BOX_WIDTH = 350;
+
+// 이미지·영상 원본 크기
+PopupManager.getMediaSize = (el) => (el.tagName === 'VIDEO'
+    ? { width: el.videoWidth, height: el.videoHeight }
+    : { width: el.naturalWidth, height: el.naturalHeight });
+
+// 크기를 알 수 있는 상태인지 (영상은 메타데이터 로드 이후)
+PopupManager.isMediaReady = (el) => (el.tagName === 'VIDEO'
+    ? el.readyState >= 1 && el.videoWidth > 0
+    : el.complete && el.naturalWidth > 0);
 
 // 전역 인스턴스 생성
 window.PopupManager = PopupManager;

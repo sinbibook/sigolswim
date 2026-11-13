@@ -199,7 +199,6 @@
       var matched = self.getMatchedRoom(rt);
       return !(matched && matched.status === 'inactive');
     });
-    var roomItems = this.getRoomMenuItems(activeRoomtypes);
 
     // Gallery title 매핑 (fallback: "stay with comfort")
     var titleComfortEl = document.querySelector('[data-gallery-title-comfort]');
@@ -210,8 +209,9 @@
     // Property nameEn 매핑 (customFields.property.nameEn 우선, 없으면 property.nameEn, 둘 다 없으면 빼고)
     var englishNameEl = document.querySelector('[data-property-english-name]');
     var propertyNameEn = this.getPropertyNameEn();
-    if (englishNameEl && propertyNameEn) {
-      englishNameEl.textContent = propertyNameEn;
+    if (englishNameEl) {
+      englishNameEl.textContent = propertyNameEn || '';
+      this.fitRoomPreviewTitle(englishNameEl);
     }
 
     // Gallery description 매핑 (\n을 <br>로 변환, 빈 값도 반영)
@@ -246,9 +246,14 @@
 
     var roomSlideHrefs = [];
 
-    roomItems.forEach(function (item) {
-      var rt = self.getRoomMenuRoomtype(item);
-      var roomLabel = self.getRoomMenuLabel(item);
+    // Room Preview 카드는 groupName 과 무관하게 **항상 전체 객실**을 깐다.
+    // 그룹으로 접히는 곳은 헤더 ROOMS 메뉴와 객실 상세 탭뿐이고,
+    // 카드는 저마다 자기 객실 상세로 연결한다.
+    activeRoomtypes.forEach(function (rt) {
+      // 원본이 내려둔 객실은 카드도 내지 않는다 — 그룹도 없고 사진도 없으면 보여줄 게 없다.
+      // 크롤러가 이름·사진을 못 읽은 경우는 groupName 이 남아 있어 여기서 걸리지 않는다.
+      if (rt && !(rt.groupName || "").trim() && !(rt.images || []).length) return;
+      var roomLabel = self.getRoomtypeName(rt);
       if (!rt || !String(roomLabel).trim()) return;
       var matched = self.getMatchedRoom(rt);
 
@@ -258,7 +263,7 @@
       var slide = document.createElement('div');
       slide.className = 'swiper-slide room_list';
 
-      var roomHref = self.getRoomMenuLink(item);
+      var roomHref = self.getRoomMenuLink(rt);
       roomSlideHrefs.push(roomHref);
       slide.setAttribute('data-room-href', roomHref);
 

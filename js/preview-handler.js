@@ -104,7 +104,7 @@ class PreviewHandler {
                 this.handlePageNavigation(event.data);
                 break;
             case 'section_update':
-                await this.handleSectionUpdate(data);
+                await this.handleSectionUpdate(data, event.data);
                 break;
             case 'THEME_UPDATE':
                 this.handleThemeUpdate(data);
@@ -171,7 +171,7 @@ class PreviewHandler {
         this.notifyRenderComplete('UPDATE_COMPLETE');
     }
 
-    async handleSectionUpdate(data) {
+    async handleSectionUpdate(data, message) {
         this.adminDataReceived = true;
 
         if (this.fallbackTimeout) {
@@ -180,6 +180,22 @@ class PreviewHandler {
         }
 
         if (!this.isInitialized) {
+            return;
+        }
+
+        // socialLinks 는 페이지 섹션이 아니라 homepage.socialLinks(전 페이지 공통 헤더) 값이다.
+        // 루트에 병합하지 않고 homepage.socialLinks 를 통째로 바꾼 뒤 헤더 소셜 버튼만 다시 매핑한다.
+        if (message && message.section === 'socialLinks') {
+            if (!this.currentData.homepage) this.currentData.homepage = {};
+            this.currentData.homepage.socialLinks = data || {};
+            await this.waitForHeaderDOM();
+            if (window.HeaderFooterMapper) {
+                const headerFooterMapper = new window.HeaderFooterMapper();
+                headerFooterMapper.data = this.currentData;
+                headerFooterMapper.isDataLoaded = true;
+                headerFooterMapper.mapSocialLinks();
+            }
+            this.notifyRenderComplete('SECTION_UPDATE_COMPLETE');
             return;
         }
 

@@ -171,13 +171,25 @@
     // hero title(customFields) 우선 → 입력 안 했으면 property usageGuide fallback
     // 빈 값도 항상 반영 → 프리뷰에서 실시간으로 지워지고 바뀜
     var heroTitle = this.getFacilityHeroTitle(f);
-    var usageText = (heroTitle && heroTitle.trim()) ? heroTitle : (f.usageGuide || '');
+    // 크롤로 들어온 시설 본문은 description 에 담긴다. usageGuide 만 보면
+    // 신규 시설은 빈칸이 되고, 블록 매칭 시설은 블록 content(이용안내 체크리스트)가
+    // 설명 자리에 나온다. description → usageGuide 순으로 본다 (D · D2 · F 와 동일).
+    // description(소개문)과 usageGuide(이용안내)를 한 줄 띄워 **둘 다** 보여준다.
+    // 예전에는 폴백이라 description 이 있으면 usageGuide 가 통째로 묻혔다 —
+    // 이용 요금·시간·제약이 화면에서 사라졌다. 둘 다 비면 슬롯을 숨긴다.
+    // (t-template-H · I · J 와 같은 방식)
+    var body = (f.description || '').trim();
+    var guide = (f.usageGuide || '').trim();
+    var joined = body + (body && guide ? '\n\n' : '') + guide;
+    var usageText = (heroTitle && heroTitle.trim()) ? heroTitle : joined;
     document.querySelectorAll('[data-facility-usage]').forEach(function (usageEl) {
       usageEl.innerHTML = usageText
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/\n/g, '<br>');
+    // 둘 다 비면 슬롯을 숨긴다 — 빈 줄만 남기 때문이다.
+      usageEl.style.display = usageText ? '' : 'none';
     });
 
     // sp_view 메인 이미지: 첫 번째 isSelected 이미지 (없으면 placeholder)

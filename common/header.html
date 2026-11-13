@@ -55,6 +55,18 @@
                 </li>
             </ul>
         </div>
+        <!-- data-* 속성 : data-homepage-socialLinks-blog (homepage.socialLinks.blog) → 네이버 버튼
+                          data-homepage-socialLinks-instagram (homepage.socialLinks.instagram) → 인스타그램 버튼
+             PC 헤더 ( YBS ) 왼쪽 같은 줄. 값이 없으면 숨김 — 매핑 전 깜빡임이 없도록 기본 숨김,
+             둘 다 없으면 래퍼([data-social-wrap])째 숨긴다 -->
+        <div class="sh_sns hidden-social-link" data-social-wrap>
+            <a href="#!" class="hidden-social-link" data-homepage-socialLinks-blog>
+                <img src="images/n_logo.png" alt="네이버">
+            </a>
+            <a href="#!" class="hidden-social-link" data-homepage-socialLinks-instagram>
+                <img src="images/insta_logo.png" alt="인스타그램">
+            </a>
+        </div>
         <a class="sh_tip ybs" data-ybs-button href="#!" target="_blank">
             (<span>YBS</span>)
         </a>
@@ -70,6 +82,15 @@
                 <img alt="로고" data-logo>
             </a>
         </h1>
+        <!-- 모바일 헤더 네이버·인스타그램 버튼 — 햄버거 바로 왼쪽. PC 와 같은 data-* / 기본 숨김 -->
+        <div class="m_sns hidden-social-link" data-social-wrap>
+            <a href="#!" class="hidden-social-link" data-homepage-socialLinks-blog>
+                <img src="images/n_logo.png" alt="네이버">
+            </a>
+            <a href="#!" class="hidden-social-link" data-homepage-socialLinks-instagram>
+                <img src="images/insta_logo.png" alt="인스타그램">
+            </a>
+        </div>
         <div id="m_navBtn"><span></span></div>
         <div id="mnavWrap">
             <div class="inner">

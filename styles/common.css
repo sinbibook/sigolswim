@@ -41,6 +41,11 @@ body{font-size:0.81em}
 #shGnb.on .sh_logo .logo-pc {display:none;}
 #shGnb.on .sh_logo .logo-m {display:block;}
 
+/* 헤더 주입 직후 ~ 매퍼가 src 를 넣기 전까지는 src 없는 <img> 가
+   깨진 이미지 아이콘 + alt("로고") 로 깜박이므로 숨긴다 */
+img[data-logo]:not([src]),
+img[data-logo][src=""] {visibility:hidden;}
+
 /* 메뉴 오픈(#shGnb.on) 시 로고도 대메뉴 텍스트와 동일하게 secondary 색으로 전환.
    업체별 컬러 로고 파일이 따로 없으므로, 로고 이미지의 알파를 mask 로 써서
    --color-secondary 를 칠한다. --logo-src / data-logo-ready 는 header-footer-mapper 가 주입 */
@@ -67,7 +72,7 @@ html[data-logo-ready] #shGnb.on .sh_logo .logo-m {opacity:1;}
 #shGnb .sh_nav ul .depth1 .depth1_a {line-height:6.25;display:block;padding:0 61px;transition:none;letter-spacing:0; text-transform:uppercase;}
 #shGnb .sh_nav ul .depth1 .depth1_a span{display: block;font-weight: 400;color: #fff;transition: all .2s;font-family: var(--font-en-main), var(--font-ko-sub);}
 #shGnb.on .sh_nav ul .depth1 .depth1_a span{color:var(--color-secondary);}
-#shGnb .sh_nav ul .depth1 .depth_box {display: block; position: absolute;left: 50%;transform: translateX(-50%);min-width: 100%; width: max-content;min-height: 145px;max-height:440px;overflow-y:auto;overflow-x:hidden;}
+#shGnb .sh_nav ul .depth1 .depth_box {display: block; position: absolute;left: 50%;transform: translateX(-50%);min-width: 100%; width: max-content;max-width:220px;min-height: 145px;max-height:440px;overflow-y:auto;overflow-x:hidden;}
 #shGnb .sh_nav ul .depth1 .depth_box.on {max-height:440px;opacity:1;}
 /* 동적 메뉴(rooms/special)가 많을 때 소메뉴 스크롤바 */
 #shGnb .sh_nav ul .depth1 .depth_box::-webkit-scrollbar {width:4px;}
@@ -76,6 +81,8 @@ html[data-logo-ready] #shGnb.on .sh_logo .logo-m {opacity:1;}
 #shGnb .sh_nav ul .depth1 .depth_box li {font-size:14px;line-height:1;padding:7px 0;color:var(--color-secondary);}
 #shGnb .sh_nav ul .depth1 .depth_box li + li {margin-top:5px;}
 #shGnb .sh_nav ul .depth1 .depth_box li a {display: none; line-height: 1.8;text-align: center;color: #999;transition: all .2s;}
+/* 객실명이 길어도 옆 대메뉴를 침범하지 않게 한 줄 말줄임 (전체 이름은 a 의 title 로) */
+#shGnb .sh_nav ul .depth1 .depth_box li a {max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 #shGnb .sh_nav ul .depth1 .depth_box li a:hover{color:red}
 #shGnb.on .sh_nav ul .depth1 .depth_box li a {color:#999;display:block}
 
@@ -104,6 +111,25 @@ html[data-logo-ready] #shGnb.on .sh_logo .logo-m {opacity:1;}
 #shGnb .ybs span{padding:0 15px;transition:0.2s}
 #shGnb .ybs:hover span{padding:0 25px}
 
+/* 네이버·인스타그램 버튼 (homepage.socialLinks.blog / instagram) — 값이 없으면 매퍼가 숨김 클래스를 유지한다 */
+.hidden-social-link{display:none!important}
+/* PC: ( YBS ) 왼쪽 같은 줄 — YBS right:10% + YBS 폭 68px + 간격 12px. 로고 높이 26px, 인스타는 비율 유지(122×126) */
+#shGnb .sh_sns{position:absolute;right:calc(10% + 80px);top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:10px}
+#shGnb .sh_sns a,
+#topmenuM .m_sns a{display:block;line-height:0}
+#shGnb .sh_sns img,
+#topmenuM .m_sns img{display:block;width:auto;height:26px}
+/* 소셜이 보일 때만(매퍼가 루트에 찍는 data-social="on") 대메뉴 좌우 여백을 줄여 YBS 왼쪽에 자리를 만든다.
+   여백을 줄이지 않으면 TRAVEL 이 켜진 사이트에서 TRAVEL 글자와 소셜이 겹친다 (61px → 40 / 28 / 15px).
+   depth1_a 는 transition:none 이라 매핑 직후 여백이 튀지 않는다. */
+[data-social='on'] #shGnb .sh_nav ul .depth1 .depth1_a{padding:0 40px}
+@media (max-width:1280px){
+[data-social='on'] #shGnb .sh_nav ul .depth1 .depth1_a{padding:0 28px}
+}
+@media (max-width:1199px){
+[data-social='on'] #shGnb .sh_nav ul .depth1 .depth1_a{padding:0 15px}
+}
+
 /* 반응형 메뉴 [s] */
 #topmenuM{display:none;position:relative;width:100%;min-height:66px;padding:15px 15px 15px 15px;line-height:1.8;font-family:var(--font-ko-main);font-weight:400}	
 /* 로고 */
@@ -114,6 +140,8 @@ html[data-logo-ready] #shGnb.on .sh_logo .logo-m {opacity:1;}
 
 /* 상단 버튼 및 오픈메뉴 */
 #m_navBtn{position:absolute;top:25px;right:15px;z-index:5;width:24px;height:30px}
+/* 네이버·인스타그램 버튼 — 햄버거 바로 왼쪽 (햄버거 세로 중심 40px 에 맞춤). 메뉴가 열리면 패널(z-index 6) 아래로 가려진다 */
+#topmenuM .m_sns{position:absolute;right:53px;top:27px;z-index:3;display:flex;align-items:center;gap:10px}
 #m_navBtn span{display:block;position:relative;top:50%;transform:translateY(-50%);width:100%;height:2px;background-color:#fff}
 #m_navBtn span.on:before, #m_navBtn span.on:after{background-color:#000}
 #m_navBtn span:before, #m_navBtn span:after{display:block;content:"";position:absolute;top:-8px;width:24px;height:2px;background-color:#fff;transition:all .1s}
@@ -160,11 +188,15 @@ background-image: url(../images/icon_down.png);background-repeat: no-repeat; bac
 }
 
 /* ========================== CONTAINER */
-#sh_section{background:url(../img/common/bg.jpg) repeat}
+/* ⚠️ 원래 `url(../img/common/bg.jpg)` 반복 배경이 있었으나 `img/` 디렉터리가
+   저장소에 한 번도 커밋된 적이 없어 전 페이지에서 404 가 났다(git 이력 확인).
+   원본 출처도 남아 있지 않아 복원이 불가능해 죽은 참조를 제거한다.
+   텍스처가 필요해지면 `img/common/bg.jpg` 를 추가하고 아래 두 선택자에 되살린다:
+     #sh_section / #sh_container .section */
 #sh_container{position:relative;width:100%;z-index:4;}
 #sh_container_wrapper{position:relative;width:100%}
 #sh_container_wrapper:after{display:block;visibility:hidden;clear:both;content:""}
-#sh_container .section{background:url(../img/common/bg.jpg);background-repeat:repeat}
+
 
 /* ========================== CONTENT */
 #sh_content{position:relative;z-index:4;max-width:1200px;min-height:500px;padding:0;margin:70px auto 80px;line-height:1.6;color:#888;zoom:1}
@@ -359,4 +391,102 @@ background-image: url(../images/icon_down.png);background-repeat: no-repeat; bac
 
 #sh_ft [data-logo].empty-image-placeholder {
     min-height: 100px;
+}
+
+/* 예약하기 — 모바일 전용(`for_m`). 위치·크기는 전 템플릿 공통 규격이다. */
+.ft_btn_reserve.on {
+  position: fixed;
+  bottom: 80px;
+  right: 7px;
+  z-index: 999;
+}
+
+.ft_btn_reserve.on > a > img {
+  width: 75px;
+  height: 75px;
+}
+
+/* ============================================================
+   우측 하단 플로팅 버튼 — 상담하기 + 예약하기
+   ============================================================ */
+
+/* 예약하기(bottom:80px) 아래에 깔린다.
+   ⚠️ 노출 여부는 매퍼가 정한다 — 총판A(`partnerType === 'distributor_a'`)이고
+      `tripPropertyId` 가 있을 때만 뜬다. PC·모바일 모두 해당한다. */
+#talk_custom_button {
+  position: fixed;
+  right: 7px;
+  bottom: 6px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+#talk_custom_button img {
+  width: 75px;
+  height: 75px;
+  display: block;
+}
+
+/* ⚠️ 상담하기가 빠지면(총판B / 판매대행 / tripPropertyId 없음) 예약하기 아래가
+   빈 채로 떠 있게 된다. 매퍼가 루트에 찍는 `data-consult` 로 바닥에 붙인다.
+   예약하기 자체는 파트너 타입과 무관하게 `.for_m` 미디어쿼리로만 갈린다. */
+[data-consult='off'] .ft_btn_reserve.on {
+  bottom: 6px;
+}
+
+/* ── 푸터 농어촌민박사업자 이미지 (템플릿 확장) ─────────────────────
+   customFields.footer.ruralStayMark 가 있을 때만 매퍼가 노출한다(마크업 기본 숨김).
+   우측 정보 칸 맨 위(예약문의 위)에 정보 텍스트와 같은 정렬로 둔다.
+   세로형(마크 + 신고번호 박스)이라 폭을 고정(PC 180px / 모바일 160px)하고 높이는 비율에 맡긴다.
+   신고번호가 읽히도록 모바일에서도 160px 아래로 줄이지 않는다.
+   #sh_ft 는 PC 380px / 태블릿 583px 고정 높이라 이미지가 들어가면 넘친다.
+   매퍼가 붙이는 .has-rural-stay-mark 일 때만 높이를 내용에 맡기고(기존 높이는 최소값으로 유지)
+   좌우 칸을 늘려 좌측 copyright 가 바닥에 붙는 기존 배치를 지킨다. */
+#sh_ft .ft_rural_stay_mark_wrap {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 24px;
+}
+#sh_ft .ft_rural_stay_mark {
+  display: block;
+  width: 180px;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+@media (max-width: 768px) {
+  #sh_ft .ft_rural_stay_mark {
+    width: 160px;
+  }
+}
+@media (min-width: 769px) {
+  #sh_ft.has-rural-stay-mark {
+    height: auto;
+  }
+  #sh_ft.has-rural-stay-mark .flex {
+    height: auto;
+    min-height: 380px;
+    align-items: stretch;
+  }
+  #sh_ft.has-rural-stay-mark .left,
+  #sh_ft.has-rural-stay-mark .right {
+    height: auto;
+  }
+  #sh_ft.has-rural-stay-mark .right {
+    padding-bottom: 45px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  #sh_ft.has-rural-stay-mark .flex {
+    min-height: 583px;
+  }
+  #sh_ft.has-rural-stay-mark .right {
+    padding-bottom: 40px;
+  }
+}
+@media (max-width: 768px) {
+  #sh_ft .ft_rural_stay_mark_wrap {
+    justify-content: center;
+    padding-bottom: 20px;
+  }
 }

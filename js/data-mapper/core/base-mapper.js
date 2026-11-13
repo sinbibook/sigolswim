@@ -115,6 +115,37 @@
     return list.length ? list[0].url : '';
   };
 
+  // 객실 평면도 소스.
+  // 크롤러가 원본 객실 상세의 평면도 영역에서 이미지를 찾았을 때만 이 필드/카테고리를 채운다.
+  // ⚠️ 제목·설명 자리가 없다. 도면 이미지 한 장이 전부다.
+  BaseDataMapper.prototype.getRoomFloorplanImages = function (roomtype) {
+    if (!roomtype) return [];
+
+    var direct =
+      roomtype.floorplanImages ||
+      roomtype.floorplans ||
+      (roomtype.floorplan && roomtype.floorplan.images) ||
+      [];
+    if (direct && !Array.isArray(direct)) direct = [direct];
+
+    if (direct.length) {
+      var selectedDirect = this.getSelectedImages(direct);
+      return selectedDirect.length ? selectedDirect : direct;
+    }
+
+    var images = roomtype.images || [];
+    var filtered = images.filter(function (img) {
+      return /^(roomtype_)?floorplan$|^room_floorplan$|^floor_plan$/i.test(img.category || '');
+    });
+    var selected = this.getSelectedImages(filtered);
+    return selected.length ? selected : filtered.slice();
+  };
+
+  BaseDataMapper.prototype.getRoomFloorplanImage = function (roomtype) {
+    var images = this.getRoomFloorplanImages(roomtype);
+    return images.length ? images[0] : null;
+  };
+
   // ── 객실타입(roomtypes) 공통 헬퍼 (room-mapper 와 동일 규칙) ───────
   // 객실명/이미지 = customFields.roomtypes, 그 외(상태·구성 등) = rooms[] (id 매칭)
   BaseDataMapper.prototype.getRoomtypes = function () {
@@ -154,10 +185,11 @@
   };
 
   BaseDataMapper.prototype.getRoomGroupName = function (roomtype) {
-    return String((roomtype && (roomtype.groupname || roomtype.groupName || roomtype.group_name)) || '').trim();
+    return String((roomtype && roomtype.groupName) || '').trim();
   };
   BaseDataMapper.prototype.hasRoomGroups = function (roomtypes) {
-    return (roomtypes || []).some(function (rt) { return !!String((rt && (rt.groupname || rt.groupName || rt.group_name)) || '').trim(); });
+    var self = this;
+    return (roomtypes || []).some(function (rt) { return !!self.getRoomGroupName(rt); });
   };
   BaseDataMapper.prototype.getRoomMenuItems = function (roomtypes, resolveName) {
     var self = this;
@@ -169,6 +201,11 @@
     var items = [];
     list.forEach(function (rt) {
       var groupName = self.getRoomGroupName(rt);
+      // 그룹 숙소에서는 미그룹 객실을 메뉴에 내지 않는다.
+      // 원본 헤더가 그룹만 노출하고, 미그룹 객실은 목록 / Room Preview 로만 도달한다.
+      // (Room Preview 는 roomtypes[] 전체를 그리므로 영향 없다)
+      if (!groupName) return;
+
       var label = groupName || (resolveName ? resolveName(rt) : self.getRoomtypeName(rt));
       if (!String(label).trim()) return;
       var key = groupName ? 'group:' + groupName : 'room:' + rt.id;
@@ -186,6 +223,32 @@
   BaseDataMapper.prototype.isRoomMenuItemActive = function (item, currentId) {
     if (!item || !currentId) return false;
     return (item.roomtypes || []).some(function (rt) { return String(rt && rt.id) === String(currentId); });
+  };
+
+  // ── 객실 미리보기(layout-map) 사용 여부 ──────────────────
+  // layout-map.html 이 404 로 보내는 기준과 같아야 한다.
+  // E 는 **명시적으로 enabled === false 일 때만** 꺼짐으로 본다
+  // (섹션이 없으면 = 데이터 미도착/부분 갱신 → 리다이렉트하지 않는다).
+  BaseDataMapper.prototype.isLayoutMapEnabled = function () {
+    var page = this.getPages().layoutMap;
+    var section = page && page.sections && page.sections[0];
+    return !(section && section.enabled === false);
+  };
+
+  // 대메뉴 ROOMS(푸터 data-footer-rooms-link)가 갈 곳.
+  //   미리보기 켜짐 → layout-map.html (객실 미리보기)
+  //   미리보기 꺼짐 → 첫 번째 객실 상세 (헤더 ROOMS 서브메뉴의 첫 객실 항목과 같은 곳 — 그룹 숙소면 첫 그룹의 첫 객실)
+  // 객실이 하나도 없으면 갈 곳이 없으므로 null — 호출부가 정한다.
+  BaseDataMapper.prototype.getRoomsEntryLink = function () {
+    if (this.isLayoutMapEnabled()) return 'layout-map.html';
+    var self = this;
+    var link = null;
+    this.getRoomMenuItems(this.getRoomtypes()).some(function (item) {
+      if (!String(self.getRoomMenuLabel(item)).trim()) return false;
+      link = self.getRoomMenuLink(item, 'id');
+      return true;
+    });
+    return link;
   };
 
   BaseDataMapper.prototype.toPhoneList = function (value) {
@@ -234,6 +297,27 @@
     upsertMetaByName('keywords', seo.keywords);
     upsertMetaByName('naver-site-verification', seo.naverSiteVerification);
     upsertMetaByName('google-site-verification', seo.googleSiteVerification);
+  };
+
+  // 데스크톱에서 숙소명이 제목 너비를 넘지 않도록 실제 렌더링 폭에 맞춘다.
+  BaseDataMapper.prototype.fitRoomPreviewTitle = function (nameEl) {
+    var title = nameEl.parentElement;
+    if (!title) return;
+    var fit = function () {
+      title.style.fontSize = '';
+      if (window.innerWidth <= 1024 || !nameEl.textContent.trim()) return;
+      var size = parseFloat(getComputedStyle(title).fontSize);
+      var width = title.clientWidth;
+      if (width && nameEl.scrollWidth > width) {
+        title.style.fontSize = (size * width / nameEl.scrollWidth * 0.99) + 'px';
+      }
+    };
+    fit();
+    if (!this._roomTitleFit) {
+      this._roomTitleFit = fit;
+      window.addEventListener('resize', fit);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    }
   };
 
   global.BaseDataMapper = BaseDataMapper;
